@@ -1,7 +1,7 @@
 import Header from "./Shared/Header";
 import Footer from "./Shared/Footer";
 
-const MainLayout = ({ children }: any) => {
+const GuestLayout = ({ children }: any) => {
     return (
         <>
             <Header />
@@ -13,4 +13,4 @@ const MainLayout = ({ children }: any) => {
     );
 };
 
-export default MainLayout;
+export default GuestLayout;

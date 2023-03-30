@@ -1,5 +1,5 @@
 import { useAuth } from '@/hooks/auth'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import GuestLayout from '@/components/Layouts/GuestLayout'
@@ -9,54 +9,44 @@ import Button from '@/components/Forms/Button'
 import InputError from '@/components/Forms/InputError'
 import Link from 'next/link'
 
-const Login = () => {
-    const router = useRouter()
-
-    const { login } = useAuth({
+const Register = () => {
+    const router = useRouter();
+    
+    const { register } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/dashboard'
-    })
+        redirectIfAuthenticated: '/login'
+    });
 
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const [remember, setRemember] = useState<boolean>(false)
-    const [errors, setErrors] = useState<{ email?: string[], password?: string[] }>({});
-    const [status, setStatus] = useState<string | null>(null)
-
-    useEffect(() => {
-        if (typeof router.query.reset === 'string' && router.query.reset.length > 0 && !errors) {
-            setStatus(atob(router.query.reset))
-        } else {
-            setStatus(null)
-        }
-    }, [router.query.reset, errors])
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+    const [errors, setErrors] = useState<{ name?: string[], email?: string[], password?: string[] }>({});
 
     const submitForm = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
-        event.preventDefault()
+        event.preventDefault();
 
-        await login({
+        await register({
+            name,
             email,
             password,
-            remember: remember,
+            password_confirmation: passwordConfirmation,
             setErrors,
-            setStatus,
-        })
+        });
     }
-
-    console.log(errors);
 
     return (
         <>
             <Head>
-                <title>Login</title>
+                <title>Register</title>
             </Head>
             <GuestLayout>
                 <div className="bg-base-1 d-flex align-items-start align-items-lg-center flex-fill">
                     <div className="container h-100 py-6">
                         <div className="text-center d-block d-lg-none">
-                            <h1 className="h2 mb-3 d-inline-block">Login</h1>
+                            <h1 className="h2 mb-3 d-inline-block">Register</h1>
                             <div className="m-auto">
-                                <p className="text-muted font-weight-normal font-size-lg mb-0">Welcome back.</p>
+                                <p className="text-muted font-weight-normal font-size-lg mb-0">Join us.</p>
                             </div>
                         </div>
                         <div className="row h-100 justify-content-center align-items-center mt-5 mt-lg-0">
@@ -67,6 +57,19 @@ const Login = () => {
                                             <div className="card-body p-lg-5">
                                                 <form onSubmit={submitForm}>
                                                     <div className="form-group">
+                                                        <Label htmlFor="i-name">Name</Label>
+                                                        <Input
+                                                            id="i-name"
+                                                            type="text"
+                                                            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setName(event.target.value)}
+                                                            name="name"
+                                                            value={name}
+                                                            autoFocus
+                                                        />
+                                                        <InputError message={errors.name} />
+                                                    </div>
+                                                    <div className="form-group">
                                                         <Label htmlFor="i-email">Email address</Label>
                                                         <Input
                                                             id="i-email"
@@ -75,7 +78,6 @@ const Login = () => {
                                                             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setEmail(event.target.value)}
                                                             name="email"
                                                             value={email}
-                                                            autoFocus
                                                         />
                                                         <InputError message={errors.email} />
                                                     </div>
@@ -91,36 +93,27 @@ const Login = () => {
                                                         />
                                                         <InputError message={errors.password} />
                                                     </div>
-                                                    <div className="form-group row">
-                                                        <div className="col-6">
-                                                            <div className="custom-control custom-checkbox">
-                                                                <input 
-                                                                    className="custom-control-input"
-                                                                    type="checkbox"
-                                                                    name="remember"
-                                                                    id="i-remember"
-                                                                    onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setRemember(event.target.checked)}
-                                                                />
-                                                                <label className="custom-control-label" htmlFor="i-remember">
-                                                                    Remember me
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6 text-right">
-                                                            <a href="#">
-                                                                Forgot password?
-                                                            </a>
-                                                        </div>
+                                                    <div className="form-group">
+                                                        <Label htmlFor="i-password-confirmation">Password confirmation</Label>
+                                                        <Input
+                                                            id="i-password-confirmation"
+                                                            type="password"
+                                                            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setPasswordConfirmation(event.target.value)}
+                                                            name="password_confirmation"
+                                                            value={passwordConfirmation}
+                                                        />
+                                                        <InputError message={errors.password} />
                                                     </div>
                                                     <Button className="btn btn-block btn-primary py-2">
-                                                        Login
+                                                        Register
                                                     </Button>
                                                 </form>
                                             </div>
                                             <div className="card-footer bg-base-2 border-0">
                                                 <div className="text-center text-muted my-2">
-                                                    Don't have an account?
-                                                    <Link href="/register" className='text-decoration-none'> Register</Link>
+                                                    Already have an account?
+                                                    <Link href="/login" className='text-decoration-none'> Login</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,10 +122,10 @@ const Login = () => {
                                                 <div className="d-flex align-items-center d-flex flex-fill">
                                                     <div className="text-light ml-5">
                                                         <div className="h2 font-weight-bold">
-                                                            Login
+                                                            Register
                                                         </div>
                                                         <div className="font-size-lg font-weight-medium">
-                                                            Welcome back.
+                                                            Join us.
                                                         </div>
                                                     </div>
                                                 </div>
@@ -146,7 +139,7 @@ const Login = () => {
                 </div>
             </GuestLayout>
         </>
-    )
+    );
 }
 
-export default Login
+export default Register;

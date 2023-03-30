@@ -3,8 +3,18 @@ import axios from '@/lib/axios'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
+export type User = {
+    uuid: number
+    name: string
+    email: string
+    role: string
+    email_verified_at: string
+    created_at: string
+    updated_at: string
+}
+
 export type Auth = {
-    user: any
+    user: User | undefined
     register: (props: any) => Promise<void>
     login: (props: any) => Promise<void>
     logout: () => Promise<void>
@@ -55,7 +65,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: AuthOptions) =>
             .then(() => mutate())
             .catch(error => {
                 if (error.response.status !== 422) throw error
-
                 setErrors(error.response.data.errors)
             })
     }
