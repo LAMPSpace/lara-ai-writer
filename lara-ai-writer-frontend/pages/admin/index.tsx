@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import DashboardLayout from '@/components/Layouts/DashboardLayout'
-import { USER_MENU_LIST, ADMIN_MENU_LIST } from '@/components/Constants/menu-list.constant'
+import { ADMIN_MENU_LIST } from '@/components/Constants/menu-list.constant'
 import Sidebar from '@/components/Layouts/Shared/Sidebar'
 
-const Dashboard = () => {
+const AdminPage = () => {
     const router = useRouter()
     const { user } = useAuth({ middleware: 'auth' })
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
                 <Head>
                     <title>Dashboard</title>
                 </Head>
-                <DashboardLayout user={user} sidebar={<Sidebar menuList={USER_MENU_LIST}/>}>
+                <DashboardLayout user={user} sidebar={<Sidebar menuList={ADMIN_MENU_LIST}/>}>
 
                 </DashboardLayout>
             </>
@@ -38,4 +38,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard
+export default AdminPage

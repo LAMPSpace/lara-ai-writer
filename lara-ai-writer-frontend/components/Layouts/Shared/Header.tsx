@@ -12,11 +12,11 @@ const Header = () => {
         <div id="header" className="header sticky-top shadow bg-base-0 z-1025">
             <div className="container">
                 <nav className={`navbar navbar-expand-lg navbar-light ${isMenuOpen ? 'show' : ''} px-0 py-3`}>
-                    <a href="/dashboard" className="navbar-brand p-0">
+                    <Link href="/dashboard" className="navbar-brand p-0">
                         <div className="logo h-100">
                             LAiMP
                         </div>
-                    </a>
+                    </Link>
                     <button
                         className="navbar-toggler border-0 p-0"
                         type="button"
