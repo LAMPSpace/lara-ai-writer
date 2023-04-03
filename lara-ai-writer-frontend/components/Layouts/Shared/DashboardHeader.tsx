@@ -4,10 +4,9 @@ import Link from "next/link";
 type DashboardHeaderProps = {
     isMenuOpen: boolean;
     setIsMenuOpen: (isMenuOpen: boolean) => void;
-}
+};
 
 const DashboardHeader = ({ isMenuOpen, setIsMenuOpen }: DashboardHeaderProps) => {
-
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -18,11 +17,9 @@ const DashboardHeader = ({ isMenuOpen, setIsMenuOpen }: DashboardHeaderProps) =>
                 <div className="container-fluid">
                     <nav className="navbar navbar-light px-0 py-3">
                         <Link href="/dashboard" className="navbar-brand p-0">
-                            <div className="logo">
-                                LAiMP
-                            </div>
+                            <div className="logo">LAiMP</div>
                         </Link>
-                        <button 
+                        <button
                             className="slide-menu-toggle navbar-toggler border-0 p-0"
                             type="button"
                             onClick={toggleMenu}
@@ -33,7 +30,7 @@ const DashboardHeader = ({ isMenuOpen, setIsMenuOpen }: DashboardHeaderProps) =>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default DashboardHeader;

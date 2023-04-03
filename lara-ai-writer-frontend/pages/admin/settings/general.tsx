@@ -3,22 +3,21 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import { USER_MENU_LIST, ADMIN_MENU_LIST } from "@/components/Constants/menu-list.constant";
+import { ADMIN_MENU_LIST } from "@/components/Constants/menu-list.constant";
 import Sidebar from "@/components/Layouts/Shared/Sidebar";
 
-const Dashboard = () => {
+const SettingGeneral = () => {
     const router = useRouter();
     const { user } = useAuth({ middleware: "auth" });
 
     return user ? (
         <>
             <Head>
-                <title>Dashboard</title>
+                <title>General - Settings - LAiMP</title>
             </Head>
-            <DashboardLayout
-                user={user}
-                sidebar={<Sidebar menuList={USER_MENU_LIST} />}
-            ></DashboardLayout>
+            <DashboardLayout user={user} sidebar={<Sidebar menuList={ADMIN_MENU_LIST} />}>
+                Genaral Setting
+            </DashboardLayout>
         </>
     ) : (
         <div className="flex-fill">
@@ -35,4 +34,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default SettingGeneral;

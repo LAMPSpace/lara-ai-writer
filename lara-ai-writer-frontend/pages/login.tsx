@@ -1,38 +1,38 @@
-import { useAuth } from '@/hooks/auth'
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/Forms/Input'
-import Label from '@/components/Forms/Label'
-import Button from '@/components/Forms/Button'
-import InputError from '@/components/Forms/InputError'
-import Link from 'next/link'
+import { useAuth } from "@/hooks/auth";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import GuestLayout from "@/components/Layouts/GuestLayout";
+import Input from "@/components/Forms/Input";
+import Label from "@/components/Forms/Label";
+import Button from "@/components/Forms/Button";
+import InputError from "@/components/Forms/InputError";
+import Link from "next/link";
 
 const Login = () => {
-    const router = useRouter()
+    const router = useRouter();
 
     const { login } = useAuth({
-        middleware: 'guest',
-        redirectIfAuthenticated: '/dashboard'
-    })
+        middleware: "guest",
+        redirectIfAuthenticated: "/dashboard",
+    });
 
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const [remember, setRemember] = useState<boolean>(false)
-    const [errors, setErrors] = useState<{ email?: string[], password?: string[] }>({});
-    const [status, setStatus] = useState<string | null>(null)
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [remember, setRemember] = useState<boolean>(false);
+    const [errors, setErrors] = useState<{ email?: string[]; password?: string[] }>({});
+    const [status, setStatus] = useState<string | null>(null);
 
     useEffect(() => {
-        if (typeof router.query.reset === 'string' && router.query.reset.length > 0 && !errors) {
-            setStatus(atob(router.query.reset))
+        if (typeof router.query.reset === "string" && router.query.reset.length > 0 && !errors) {
+            setStatus(atob(router.query.reset));
         } else {
-            setStatus(null)
+            setStatus(null);
         }
-    }, [router.query.reset, errors])
+    }, [router.query.reset, errors]);
 
     const submitForm = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
-        event.preventDefault()
+        event.preventDefault();
 
         await login({
             email,
@@ -40,8 +40,8 @@ const Login = () => {
             remember: remember,
             setErrors,
             setStatus,
-        })
-    }
+        });
+    };
 
     console.log(errors);
 
@@ -56,7 +56,9 @@ const Login = () => {
                         <div className="text-center d-block d-lg-none">
                             <h1 className="h2 mb-3 d-inline-block">Login</h1>
                             <div className="m-auto">
-                                <p className="text-muted font-weight-normal font-size-lg mb-0">Welcome back.</p>
+                                <p className="text-muted font-weight-normal font-size-lg mb-0">
+                                    Welcome back.
+                                </p>
                             </div>
                         </div>
                         <div className="row h-100 justify-content-center align-items-center mt-5 mt-lg-0">
@@ -67,12 +69,18 @@ const Login = () => {
                                             <div className="card-body p-lg-5">
                                                 <form onSubmit={submitForm}>
                                                     <div className="form-group">
-                                                        <Label htmlFor="i-email">Email address</Label>
+                                                        <Label htmlFor="i-email">
+                                                            Email address
+                                                        </Label>
                                                         <Input
                                                             id="i-email"
                                                             type="text"
-                                                            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setEmail(event.target.value)}
+                                                            className={`form-control ${
+                                                                errors.email ? "is-invalid" : ""
+                                                            }`}
+                                                            onChange={(
+                                                                event: React.ChangeEvent<HTMLInputElement>
+                                                            ): void => setEmail(event.target.value)}
                                                             name="email"
                                                             value={email}
                                                             autoFocus
@@ -81,11 +89,17 @@ const Login = () => {
                                                     </div>
                                                     <div className="form-group">
                                                         <Label htmlFor="i-password">Password</Label>
-                                                        <Input 
+                                                        <Input
                                                             id="i-password"
                                                             type="password"
-                                                            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setPassword(event.target.value)}
+                                                            className={`form-control ${
+                                                                errors.password ? "is-invalid" : ""
+                                                            }`}
+                                                            onChange={(
+                                                                event: React.ChangeEvent<HTMLInputElement>
+                                                            ): void =>
+                                                                setPassword(event.target.value)
+                                                            }
                                                             name="password"
                                                             value={password}
                                                         />
@@ -94,22 +108,29 @@ const Login = () => {
                                                     <div className="form-group row">
                                                         <div className="col-6">
                                                             <div className="custom-control custom-checkbox">
-                                                                <input 
+                                                                <input
                                                                     className="custom-control-input"
                                                                     type="checkbox"
                                                                     name="remember"
                                                                     id="i-remember"
-                                                                    onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setRemember(event.target.checked)}
+                                                                    onChange={(
+                                                                        event: React.ChangeEvent<HTMLInputElement>
+                                                                    ): void =>
+                                                                        setRemember(
+                                                                            event.target.checked
+                                                                        )
+                                                                    }
                                                                 />
-                                                                <label className="custom-control-label" htmlFor="i-remember">
+                                                                <label
+                                                                    className="custom-control-label"
+                                                                    htmlFor="i-remember"
+                                                                >
                                                                     Remember me
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div className="col-6 text-right">
-                                                            <a href="#">
-                                                                Forgot password?
-                                                            </a>
+                                                            <a href="#">Forgot password?</a>
                                                         </div>
                                                     </div>
                                                     <Button className="btn btn-block btn-primary py-2">
@@ -120,7 +141,13 @@ const Login = () => {
                                             <div className="card-footer bg-base-2 border-0">
                                                 <div className="text-center text-muted my-2">
                                                     Don't have an account?
-                                                    <Link href="/register" className='text-decoration-none'> Register</Link>
+                                                    <Link
+                                                        href="/register"
+                                                        className="text-decoration-none"
+                                                    >
+                                                        {" "}
+                                                        Register
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,7 +173,7 @@ const Login = () => {
                 </div>
             </GuestLayout>
         </>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

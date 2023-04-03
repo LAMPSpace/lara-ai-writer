@@ -1,27 +1,31 @@
-import { useAuth } from '@/hooks/auth'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/Forms/Input'
-import Label from '@/components/Forms/Label'
-import Button from '@/components/Forms/Button'
-import InputError from '@/components/Forms/InputError'
-import Link from 'next/link'
+import { useAuth } from "@/hooks/auth";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import GuestLayout from "@/components/Layouts/GuestLayout";
+import Input from "@/components/Forms/Input";
+import Label from "@/components/Forms/Label";
+import Button from "@/components/Forms/Button";
+import InputError from "@/components/Forms/InputError";
+import Link from "next/link";
 
 const Register = () => {
     const router = useRouter();
-    
+
     const { register } = useAuth({
-        middleware: 'guest',
-        redirectIfAuthenticated: '/login'
+        middleware: "guest",
+        redirectIfAuthenticated: "/login",
     });
 
-    const [name, setName] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
-    const [errors, setErrors] = useState<{ name?: string[], email?: string[], password?: string[] }>({});
+    const [name, setName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
+    const [errors, setErrors] = useState<{
+        name?: string[];
+        email?: string[];
+        password?: string[];
+    }>({});
 
     const submitForm = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
@@ -33,7 +37,7 @@ const Register = () => {
             password_confirmation: passwordConfirmation,
             setErrors,
         });
-    }
+    };
 
     return (
         <>
@@ -46,7 +50,9 @@ const Register = () => {
                         <div className="text-center d-block d-lg-none">
                             <h1 className="h2 mb-3 d-inline-block">Register</h1>
                             <div className="m-auto">
-                                <p className="text-muted font-weight-normal font-size-lg mb-0">Join us.</p>
+                                <p className="text-muted font-weight-normal font-size-lg mb-0">
+                                    Join us.
+                                </p>
                             </div>
                         </div>
                         <div className="row h-100 justify-content-center align-items-center mt-5 mt-lg-0">
@@ -61,8 +67,12 @@ const Register = () => {
                                                         <Input
                                                             id="i-name"
                                                             type="text"
-                                                            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
-                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setName(event.target.value)}
+                                                            className={`form-control ${
+                                                                errors.name ? "is-invalid" : ""
+                                                            }`}
+                                                            onChange={(
+                                                                event: React.ChangeEvent<HTMLInputElement>
+                                                            ): void => setName(event.target.value)}
                                                             name="name"
                                                             value={name}
                                                             autoFocus
@@ -70,12 +80,18 @@ const Register = () => {
                                                         <InputError message={errors.name} />
                                                     </div>
                                                     <div className="form-group">
-                                                        <Label htmlFor="i-email">Email address</Label>
+                                                        <Label htmlFor="i-email">
+                                                            Email address
+                                                        </Label>
                                                         <Input
                                                             id="i-email"
                                                             type="text"
-                                                            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setEmail(event.target.value)}
+                                                            className={`form-control ${
+                                                                errors.email ? "is-invalid" : ""
+                                                            }`}
+                                                            onChange={(
+                                                                event: React.ChangeEvent<HTMLInputElement>
+                                                            ): void => setEmail(event.target.value)}
                                                             name="email"
                                                             value={email}
                                                         />
@@ -83,23 +99,39 @@ const Register = () => {
                                                     </div>
                                                     <div className="form-group">
                                                         <Label htmlFor="i-password">Password</Label>
-                                                        <Input 
+                                                        <Input
                                                             id="i-password"
                                                             type="password"
-                                                            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setPassword(event.target.value)}
+                                                            className={`form-control ${
+                                                                errors.password ? "is-invalid" : ""
+                                                            }`}
+                                                            onChange={(
+                                                                event: React.ChangeEvent<HTMLInputElement>
+                                                            ): void =>
+                                                                setPassword(event.target.value)
+                                                            }
                                                             name="password"
                                                             value={password}
                                                         />
                                                         <InputError message={errors.password} />
                                                     </div>
                                                     <div className="form-group">
-                                                        <Label htmlFor="i-password-confirmation">Password confirmation</Label>
+                                                        <Label htmlFor="i-password-confirmation">
+                                                            Password confirmation
+                                                        </Label>
                                                         <Input
                                                             id="i-password-confirmation"
                                                             type="password"
-                                                            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                                                            onChange={(event: React.ChangeEvent<HTMLInputElement>): void => setPasswordConfirmation(event.target.value)}
+                                                            className={`form-control ${
+                                                                errors.password ? "is-invalid" : ""
+                                                            }`}
+                                                            onChange={(
+                                                                event: React.ChangeEvent<HTMLInputElement>
+                                                            ): void =>
+                                                                setPasswordConfirmation(
+                                                                    event.target.value
+                                                                )
+                                                            }
                                                             name="password_confirmation"
                                                             value={passwordConfirmation}
                                                         />
@@ -113,7 +145,13 @@ const Register = () => {
                                             <div className="card-footer bg-base-2 border-0">
                                                 <div className="text-center text-muted my-2">
                                                     Already have an account?
-                                                    <Link href="/login" className='text-decoration-none'> Login</Link>
+                                                    <Link
+                                                        href="/login"
+                                                        className="text-decoration-none"
+                                                    >
+                                                        {" "}
+                                                        Login
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,6 +178,6 @@ const Register = () => {
             </GuestLayout>
         </>
     );
-}
+};
 
 export default Register;
