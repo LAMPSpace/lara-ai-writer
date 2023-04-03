@@ -5,11 +5,7 @@ export type InputProps = {
 };
 
 const Input = ({ disabled = false, className, ...props }: InputProps) => (
-    <input
-        className={`form-control ${className}`}
-        disabled={disabled}
-        {...props}
-    />
-)
+    <input className={`form-control ${className}`} disabled={disabled} {...props} />
+);
 
 export default Input;

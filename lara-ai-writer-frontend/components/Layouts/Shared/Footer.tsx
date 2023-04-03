@@ -6,10 +6,14 @@ const Footer = () => {
                     <div className="col-12 col-lg">
                         <ul className="nav p-0 mx-n3 mb-3 mb-lg-0 d-flex flex-column flex-lg-row">
                             <li className="nav-item d-flex">
-                                <a href="#" className="nav-link py-1">Contact</a>
+                                <a href="#" className="nav-link py-1">
+                                    Contact
+                                </a>
                             </li>
                             <li className="nav-item">
-                                <a href="#" className="nav-link py-1">Developers</a>
+                                <a href="#" className="nav-link py-1">
+                                    Developers
+                                </a>
                             </li>
                         </ul>
                     </div>

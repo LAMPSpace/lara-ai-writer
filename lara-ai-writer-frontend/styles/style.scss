@@ -44,7 +44,8 @@ body {
     margin-left: $spacer;
 }
 
-.reset-after::after, .reset-before::before {
+.reset-after::after,
+.reset-before::before {
     content: none;
 }
 
@@ -84,8 +85,8 @@ body {
     left: 0;
     position: fixed;
     transform: translateX(-113%);
-    transition-duration: .2s;
-    transition-timing-function: cubic-bezier(0,0,.2,1);
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 .slide-menu.active {
     transform: translateX(0);
@@ -99,7 +100,7 @@ body {
     }
 }
 
-.sidebar .nav-link[aria-expanded=true] > .sidebar-expand svg {
+.sidebar .nav-link[aria-expanded="true"] > .sidebar-expand svg {
     transform: rotate(180deg);
 }
 
@@ -112,7 +113,8 @@ body {
     border-right: 2px solid transparent;
 }
 
-.sidebar .nav-link[aria-expanded=true], .sub-menu {
+.sidebar .nav-link[aria-expanded="true"],
+.sub-menu {
     background: $dropdown-link-hover-bg;
 }
 
@@ -147,11 +149,13 @@ body {
 }
 
 /* Pricing Plans */
-.plan-monthly, .plan-yearly {
-    animation: fade-in .6s;
+.plan-monthly,
+.plan-yearly {
+    animation: fade-in 0.6s;
 }
 
-.plan-preload, .plan-no-animation {
+.plan-preload,
+.plan-no-animation {
     opacity: 1;
     animation: none;
 }
@@ -164,8 +168,12 @@ body {
 
 /* Animations */
 @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 ::selection {

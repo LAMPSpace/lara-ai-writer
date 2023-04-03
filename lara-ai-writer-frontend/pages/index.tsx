@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import { useAuth } from '@/hooks/auth'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import Head from "next/head";
+import Link from "next/link";
+import { useAuth } from "@/hooks/auth";
+import GuestLayout from "@/components/Layouts/GuestLayout";
 
 export default function Home() {
     const { user } = useAuth({
-        middleware: 'guest',
-        redirectIfAuthenticated: '/dashboard'
-    })
+        middleware: "guest",
+        redirectIfAuthenticated: "/dashboard",
+    });
     return (
         <>
             <Head>
@@ -28,7 +28,8 @@ export default function Home() {
                                     <div className="pt-2 d-flex flex-column flex-sm-row justify-content-center">
                                         <a
                                             href="{{ route('login') }}"
-                                            className="btn btn-primary btn-lg font-size-lg align-items-center mt-3">
+                                            className="btn btn-primary btn-lg font-size-lg align-items-center mt-3"
+                                        >
                                             <span className="d-none d-sm-block">Login</span>
                                         </a>
                                     </div>
@@ -39,5 +40,5 @@ export default function Home() {
                 </div>
             </GuestLayout>
         </>
-    )
+    );
 }

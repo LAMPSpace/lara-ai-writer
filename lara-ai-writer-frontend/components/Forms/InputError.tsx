@@ -1,7 +1,7 @@
 export type InputErrorProps = {
     message?: string[];
 };
-const InputError = ({ message = []}: InputErrorProps) => {
+const InputError = ({ message = [] }: InputErrorProps) => {
     return (
         <>
             {message.length > 0 && (
@@ -14,7 +14,7 @@ const InputError = ({ message = []}: InputErrorProps) => {
                 </>
             )}
         </>
-    )
-}
+    );
+};
 
 export default InputError;
