@@ -14,6 +14,8 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
 
     const isAdminRoute = router.pathname.includes("/admin");
 
+    const { logout } = useAuth({ middleware: "auth" });
+
     return (
         <>
             <DashboardHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
