@@ -3,13 +3,16 @@ import DashboardHeader from "./Shared/DashboardHeader";
 import Footer from "./Shared/Footer";
 import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
-import { MdLogout, MdOutlineAdminPanelSettings } from "react-icons/md";
+import { MdLogout, MdOutlineAdminPanelSettings, MdSupervisedUserCircle } from "react-icons/md";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 const DashboardLayout = ({ user, sidebar, children }: any) => {
+    const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     const { logout } = useAuth({ middleware: "auth" });
+
+    const isAdminRoute = router.pathname.includes("/admin");
 
     return (
         <>
@@ -34,17 +37,25 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                             <div className="py-3 pl-4 pr-0 font-weight-medium text-muted text-uppercase flex-grow-1">
                                 Menu
                             </div>
-                            <Link
-                                className="px-4 py-2 text-decoration-none text-secondary"
-                                href="admin"
-                                data-tooltip="true"
-                                title="Dashboard"
-                                role="button"
-                            >
-                                <span className="d-flex align-items-center">
-                                    <MdOutlineAdminPanelSettings className="width-4 height-4 fill-current" />
-                                </span>
-                            </Link>
+                            {
+                                user.role === 'admin' && (
+                                    <Link
+                                        className="px-4 py-2 text-decoration-none text-secondary"
+                                        data-tooltip="true"
+                                        title="Dashboard"
+                                        role="button"
+                                        href={isAdminRoute ? "/dashboard" : "/admin"}
+                                    >
+                                        <span className="d-flex align-items-center">
+                                            {isAdminRoute ? (
+                                                <MdSupervisedUserCircle className="fill-current width-4 height-4" />
+                                            ) : (
+                                                <MdOutlineAdminPanelSettings className="fill-current width-4 height-4" />
+                                            )}
+                                        </span>
+                                    </Link>
+                                )
+                            }
                         </div>
 
                         <div className="sidebar-section flex-grow-1 overflow-auto sidebar">
@@ -88,7 +99,11 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                         </div>
                     </div>
                 </nav>
-                {children}
+                <div className="bg-base-1 flex-fill">
+                    <div className="container py-3 my-3">
+                        {children}
+                    </div>
+                </div>
                 <Footer />
             </div>
         </>
