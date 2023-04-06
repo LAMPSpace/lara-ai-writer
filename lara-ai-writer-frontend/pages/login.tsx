@@ -75,9 +75,8 @@ const Login = () => {
                                                         <Input
                                                             id="i-email"
                                                             type="text"
-                                                            className={`form-control ${
-                                                                errors.email ? "is-invalid" : ""
-                                                            }`}
+                                                            className={`form-control ${errors.email ? "is-invalid" : ""
+                                                                }`}
                                                             onChange={(
                                                                 event: React.ChangeEvent<HTMLInputElement>
                                                             ): void => setEmail(event.target.value)}
@@ -92,9 +91,8 @@ const Login = () => {
                                                         <Input
                                                             id="i-password"
                                                             type="password"
-                                                            className={`form-control ${
-                                                                errors.password ? "is-invalid" : ""
-                                                            }`}
+                                                            className={`form-control ${errors.password ? "is-invalid" : ""
+                                                                }`}
                                                             onChange={(
                                                                 event: React.ChangeEvent<HTMLInputElement>
                                                             ): void =>
@@ -130,7 +128,7 @@ const Login = () => {
                                                             </div>
                                                         </div>
                                                         <div className="col-6 text-right">
-                                                            <a href="#">Forgot password?</a>
+                                                            <Link href="#">Forgot password?</Link>
                                                         </div>
                                                     </div>
                                                     <Button className="btn btn-block btn-primary py-2">

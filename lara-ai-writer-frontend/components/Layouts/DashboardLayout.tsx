@@ -26,9 +26,9 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                     <div className="sidebar-section flex-grow-1 d-flex flex-column w-100">
                         <div>
                             <div className="pl-4 py-3 d-flex align-items-center">
-                                <a href="{{ route('dashboard') }}" className="navbar-brand p-0">
+                                <Link href={"/dashboard"} className="navbar-brand p-0">
                                     <div className="logo">LAiMP</div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
 
@@ -36,25 +36,6 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                             <div className="py-3 pl-4 pr-0 font-weight-medium text-muted text-uppercase flex-grow-1">
                                 Menu
                             </div>
-                            {
-                                user.role === 'admin' && (
-                                    <Link
-                                        className="px-4 py-2 text-decoration-none text-secondary"
-                                        data-tooltip="true"
-                                        title="Dashboard"
-                                        role="button"
-                                        href={isAdminRoute ? "/dashboard" : "/admin"}
-                                    >
-                                        <span className="d-flex align-items-center">
-                                            {isAdminRoute ? (
-                                                <MdSupervisedUserCircle className="fill-current width-4 height-4" />
-                                            ) : (
-                                                <MdOutlineAdminPanelSettings className="fill-current width-4 height-4" />
-                                            )}
-                                        </span>
-                                    </Link>
-                                )
-                            }
                             {
                                 user.role === 'admin' && (
                                     <Link
@@ -85,7 +66,7 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                 className="py-3 pl-4 pr-0 d-flex align-items-center"
                                 aria-expanded="true"
                             >
-                                <a
+                                <Link
                                     href="#"
                                     className="d-flex align-items-center overflow-hidden text-secondary text-decoration-none flex-grow-1"
                                 >
@@ -102,9 +83,9 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
 
                                         <div className="small font-weight-medium">Account</div>
                                     </div>
-                                </a>
+                                </Link>
 
-                                <a
+                                <Link
                                     className="py-2 px-4 d-flex flex-shrink-0 align-items-center text-secondary"
                                     href="#"
                                     data-tooltip="true"
@@ -112,7 +93,7 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                     onClick={logout}
                                 >
                                     <MdLogout className="fill-current width-4 height-4" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

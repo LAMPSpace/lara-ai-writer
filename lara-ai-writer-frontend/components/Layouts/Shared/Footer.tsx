@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
     return (
         <footer id="footer" className="footer bg-base-0">
@@ -6,14 +8,14 @@ const Footer = () => {
                     <div className="col-12 col-lg">
                         <ul className="nav p-0 mx-n3 mb-3 mb-lg-0 d-flex flex-column flex-lg-row">
                             <li className="nav-item d-flex">
-                                <a href="#" className="nav-link py-1">
+                                <Link href="#" className="nav-link py-1">
                                     Contact
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a href="#" className="nav-link py-1">
+                                <Link href="#" className="nav-link py-1">
                                     Developers
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

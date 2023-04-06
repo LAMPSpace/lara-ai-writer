@@ -9,6 +9,7 @@ import Breadcrumbs from "@/components/Layouts/Shared/Breadcrumbs";
 import Title from "@/components/Layouts/Shared/Title";
 import Table from "@/components/Layouts/Shared/Table";
 import { MdMoreHoriz } from "react-icons/md";
+import Link from "next/link";
 
 const dataSource = [
     {
@@ -37,8 +38,8 @@ const columns = [
         dataIndex: "name",
         key: "name",
         className: "col-12 col-lg-5",
-        render : (text? : string, record? : any) => (
-            <a href={`/users/${record.id}`}>{text}</a>
+        render: (text?: string, record?: any) => (
+            <Link href={`/users/${record.id}`}>{text}</Link>
         )
     },
     {
@@ -62,7 +63,7 @@ const partials = () => {
                 <MdMoreHoriz className="fill-current width-4 height-4" />
             </button>
             <div className="dropdown-menu dropdown-menu-right border-0 shadow">
-                <a className="dropdown-item d-flex align-items-center" href="#">Edit</a>
+                <Link className="dropdown-item d-flex align-items-center" href="#">Edit</Link>
 
             </div>
         </>
