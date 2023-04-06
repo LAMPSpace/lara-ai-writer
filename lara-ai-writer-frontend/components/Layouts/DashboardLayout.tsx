@@ -5,12 +5,9 @@ import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
 import { MdLogout, MdOutlineAdminPanelSettings, MdSupervisedUserCircle } from "react-icons/md";
 import { useRouter } from "next/router";
-import { MdLogout, MdOutlineAdminPanelSettings, MdSupervisedUserCircle } from "react-icons/md";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const DashboardLayout = ({ user, sidebar, children }: any) => {
-    const router = useRouter();
     const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { logout } = useAuth({ middleware: "auth" });
@@ -22,9 +19,8 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
             <DashboardHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             <div className="d-flex flex-column flex-fill content">
                 <nav
-                    className={`slide-menu shadow bg-base-0 navbar navbar-light p-0 d-flex flex-column z-1030 ${
-                        isMenuOpen ? "active" : ""
-                    }`}
+                    className={`slide-menu shadow bg-base-0 navbar navbar-light p-0 d-flex flex-column z-1030 ${isMenuOpen ? "active" : ""
+                        }`}
                     id="slide-menu"
                 >
                     <div className="sidebar-section flex-grow-1 d-flex flex-column w-100">
@@ -122,14 +118,7 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                     </div>
                 </nav>
                 <div className="bg-base-1 flex-fill">
-                    <div className="container py-3 my-3">
-                        {children}
-                    </div>
-                </div>
-                <div className="bg-base-1 flex-fill">
-                    <div className="container py-3 my-3">
-                        {children}
-                    </div>
+                    {children}
                 </div>
                 <Footer />
             </div>

@@ -1,0 +1,12 @@
+<?php
+
+namespace App\{namespace};
+{useModel}{useExtend}{useImplement}
+
+class {name} {extends} {implements}
+{    
+    public function __construct({model}$model)
+    {
+        parent::__construct($model);
+    }
+}
