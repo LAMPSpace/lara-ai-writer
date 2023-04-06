@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 export type User = {
-    uuid: number;
+    uuid: string;
     name: string;
     email: string;
     role: string;
@@ -32,10 +32,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: AuthOptions) =>
         data: user,
         error,
         mutate,
-    } = useSWR("/api/user", () =>
+    } = useSWR("/api/me", () =>
         axios
-            .get("/api/user")
-            .then((res) => res.data)
+            .get("/api/me")
+            .then((res) => res.data.data)
             .catch((error) => {
                 if (error.response.status !== 409) throw error;
                 router.push("/verify-email");

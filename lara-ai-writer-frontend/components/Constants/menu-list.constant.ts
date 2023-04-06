@@ -6,6 +6,7 @@ import {
     MdSettings,
     MdSettingsSuggest,
     MdOutlineSettings,
+    MdSupervisorAccount
 } from "react-icons/md";
 import { Menu } from "../Layouts/Shared/Sidebar";
 
@@ -62,4 +63,10 @@ export const ADMIN_MENU_LIST: Menu[] = [
             },
         ],
     },
+    {
+        name: "Users",
+        icon: MdSupervisorAccount,
+        link: "/admin/users",
+        submenu: [],
+    }
 ];
