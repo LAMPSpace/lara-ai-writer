@@ -5,12 +5,9 @@ import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
 import { MdLogout, MdOutlineAdminPanelSettings, MdSupervisedUserCircle } from "react-icons/md";
 import { useRouter } from "next/router";
-import { MdLogout, MdOutlineAdminPanelSettings, MdSupervisedUserCircle } from "react-icons/md";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const DashboardLayout = ({ user, sidebar, children }: any) => {
-    const router = useRouter();
     const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { logout } = useAuth({ middleware: "auth" });
