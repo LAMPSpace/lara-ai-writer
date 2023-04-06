@@ -118,14 +118,7 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                     </div>
                 </nav>
                 <div className="bg-base-1 flex-fill">
-                    <div className="container py-3 my-3">
-                        {children}
-                    </div>
-                </div>
-                <div className="bg-base-1 flex-fill">
-                    <div className="container py-3 my-3">
-                        {children}
-                    </div>
+                    {children}
                 </div>
                 <Footer />
             </div>
