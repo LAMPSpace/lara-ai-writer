@@ -62,7 +62,7 @@ const partials = () => {
                 <MdMoreHoriz className="fill-current width-4 height-4" />
             </button>
             <div className="dropdown-menu dropdown-menu-right border-0 shadow">
-                <a class="dropdown-item d-flex align-items-center" href="#">Edit</a>
+                <a className="dropdown-item d-flex align-items-center" href="#">Edit</a>
 
             </div>
         </>
