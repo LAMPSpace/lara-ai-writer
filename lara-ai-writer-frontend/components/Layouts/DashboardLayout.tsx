@@ -16,9 +16,8 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
             <DashboardHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             <div className="d-flex flex-column flex-fill content">
                 <nav
-                    className={`slide-menu shadow bg-base-0 navbar navbar-light p-0 d-flex flex-column z-1030 ${
-                        isMenuOpen ? "active" : ""
-                    }`}
+                    className={`slide-menu shadow bg-base-0 navbar navbar-light p-0 d-flex flex-column z-1030 ${isMenuOpen ? "active" : ""
+                        }`}
                     id="slide-menu"
                 >
                     <div className="sidebar-section flex-grow-1 d-flex flex-column w-100">
@@ -88,7 +87,10 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                         </div>
                     </div>
                 </nav>
-                {children}
+                <div className="bg-base-1 flex-fill">
+                    {children}
+                </div>
+
                 <Footer />
             </div>
         </>
