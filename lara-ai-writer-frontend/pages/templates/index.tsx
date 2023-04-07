@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import { useAuth } from "@/hooks/auth";
 import Sidebar from "@/components/Layouts/Shared/Sidebar";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import LinkButton from "@/components/Layouts/Shared/LinkButton";
 import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
 import { TEMPLATES_CATEGORIES, TEMPLATES_FEATURE_BUTTONS } from "@/components/Constants/templates-page.constant";
 import TemplateCategory from "@/components/Layouts/Shared/TemplateCategory";
 import Badge from "@/components/Layouts/Shared/Badge";
+import Title from "@/components/Layouts/Shared/Title";
 
 const Templates = () => {
     const router = useRouter();
@@ -20,20 +20,7 @@ const Templates = () => {
             </Head>
             <DashboardLayout user={user} sidebar={<Sidebar menuList={USER_MENU_LIST} />}>
                 <div className="container py-5 bg-base-1">
-                    <div className="d-flex">
-                        <div className="d-flex flex-row col-md align-items-center">
-                            <div>
-                                <h2>Templates</h2>
-                            </div>
-                        </div>
-                        <div className="d-flex flex-row-reverse align-items-center">
-                            {TEMPLATES_FEATURE_BUTTONS.map((button, index) => {
-                                return (
-                                    <LinkButton item={button} key={"templates_link_button_" + index} />
-                                );
-                            })}
-                        </div>
-                    </div>
+                    <Title buttons={TEMPLATES_FEATURE_BUTTONS} title="Templates" />
                 </div>
                 <div className="container py-2 bg-base-1">
                     <div className="input-group input-group-lg bg-white p-3">
