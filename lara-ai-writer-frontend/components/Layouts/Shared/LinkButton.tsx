@@ -4,8 +4,9 @@ import { MdChevronRight } from "react-icons/md";
 
 export type LinkButtonInformation = {
     buttonIcon: IconType | null;
-    iconColor: string | null;
+    iconColor: string | null;       //Hex color
     title: string;
+    titleColor: string | "",
     rightArrow: boolean;
     buttonType: string;
     buttonLink: string;
@@ -22,7 +23,7 @@ const LinkButton = (
     { item }: LinkButtonProps) => {
     return (
         <Link href={item.buttonLink}
-            className={"btn " + item.buttonType + " d-flex align-items-center"}
+            className={"btn " + item.buttonType + " d-flex align-items-center w-100"}
             style={{ height: item.height, backgroundColor: item.buttonBackgroundColor }}>
             <span className="d-flex flex-row align-items-center">
                 {item.buttonIcon &&
@@ -47,7 +48,7 @@ const LinkButton = (
                     </>
 
                 }
-                <span style={{ fontSize: item.fontSize }}>{item.title}</span>
+                <span style={{ fontSize: item.fontSize, color: item.titleColor }}>{item.title}</span>
             </span>
             <span className="d-flex flex-row-reverse align-items-center ml-auto">
                 {item.rightArrow && <MdChevronRight className="fill-current width-6 height-6" />}

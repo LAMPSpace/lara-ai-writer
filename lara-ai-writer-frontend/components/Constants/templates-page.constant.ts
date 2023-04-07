@@ -8,6 +8,7 @@ export const TEMPLATES_FEATURE_BUTTONS: LinkButtonInformation[] = [
         buttonIcon: null,
         iconColor: null,
         title: 'New',
+        titleColor: '',
         rightArrow: true,
         buttonType: 'btn-primary',
         buttonLink: '/templates',

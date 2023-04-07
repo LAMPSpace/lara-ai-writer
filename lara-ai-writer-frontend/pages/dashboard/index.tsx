@@ -52,8 +52,8 @@ const Dashboard = () => {
                                 <div className="d-flex flex-row-reverse align-items-center col-12 col-lg-6 col-md-6 col-sm-12">
                                     {DASHBOARD_FEATURE_BUTTONS.map((button, index) => {
                                         return (
-                                            <div className="ml-2">
-                                                <LinkButton item={button} key={"dashboard_link_button_" + index} />
+                                            <div className="ml-2" key={"dashboard_link_button_" + index}>
+                                                <LinkButton item={button} />
                                             </div>
                                         );
                                     })}
@@ -73,8 +73,8 @@ const Dashboard = () => {
                                     <div className="d-flex flex-row-reverse col-6 align-items-center px-2">
                                         {category.buttons.map((button, index) => {
                                             return (
-                                                <div className="ml-1">
-                                                    <LinkButton item={button} key={"dashboard_category_" + category.name + "_link_button_" + index} />
+                                                <div className="ml-1" key={"dashboard_category_" + category.name + "_link_button_" + index}>
+                                                    <LinkButton item={button} />
                                                 </div>
                                             );
                                         })}
@@ -83,8 +83,8 @@ const Dashboard = () => {
                                 <div className="row">
                                     {category.content.items.map((item, index) => {
                                         return (
-                                            <div className={"col-12 col-md-6 p-2 col-lg-" + 12 / category.content.perRow}>
-                                                <category.content.itemType item={item} key={"dashboard_category_" + category.name + "_item_" + index} />
+                                            <div className={"col-12 col-md-6 p-2 col-lg-" + 12 / category.content.perRow} key={"dashboard_category_" + category.name + "_item_" + index}>
+                                                <category.content.itemType item={item} />
                                             </div>
                                         );
                                     })}
