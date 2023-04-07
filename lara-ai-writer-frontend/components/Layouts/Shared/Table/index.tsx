@@ -1,23 +1,29 @@
 import Search from "./Search";
-import Filter from "./Filter";
+import Filter, { FilterFields } from "./Filter";
 import { MdMoreHoriz } from "react-icons/md";
+import { useState } from "react";
+import PartialMenu from "./PartialMenu";
+import CustomPagination from "../CustomPagination";
 
 export type columnType = {
     title?: string,
     dataIndex: string,
     key?: string,
     className?: string,
-    render?: (text?: string, record?: any, index?: number) => React.ReactNode,
+    render?: (text: string, record?: any, index?: number) => React.ReactNode,
 };
 
 type TableProps = {
     headerTitle?: string,
     dataSource?: any[],
     columns?: Array<columnType>,
-    partials?: any,
+    partials?: string[],
+    filterFields?: FilterFields[]
 };
 
-const Table = ({ headerTitle, dataSource, columns, partials }: TableProps) => {
+const Table = ({ headerTitle, dataSource, columns, partials, filterFields }: TableProps) => {
+    const [searchValue, setSearchValue] = useState("");
+
     return (
         <div className="card border-0 shadow-sm">
             <div className="card-header align-items-center">
@@ -29,8 +35,8 @@ const Table = ({ headerTitle, dataSource, columns, partials }: TableProps) => {
                     </div>
                     <div className="col-auto">
                         <div className="input-group input-group-sm">
-                            <Search />
-                            <Filter />
+                            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+                            <Filter filterFields={filterFields ? filterFields : []} />
                         </div>
                     </div>
                 </div>
@@ -68,11 +74,11 @@ const Table = ({ headerTitle, dataSource, columns, partials }: TableProps) => {
                                 </div>
                             </div>
                             {
-                                dataSource.map((data, index) => (
+                                dataSource.filter(item => item.name.toLowerCase().includes(searchValue.trim())).map((data, index) => (
                                     <div className="list-group-item px-0" key={index}>
                                         <div className="row align-items-center">
                                             <div className="col text-truncate">
-                                                <div className="row text-truncate">
+                                                <div className="row text-truncate align-items-center">
                                                     {
                                                         columns?.map((column, index) => (
                                                             <div className={column.className} key={index}>
@@ -93,7 +99,8 @@ const Table = ({ headerTitle, dataSource, columns, partials }: TableProps) => {
                                                     <div className="col-auto">
                                                         <div className="form-row">
                                                             <div className="col">
-                                                                { partials(data, index) }
+                                                                {/* {partials(data, index)} */}
+                                                                <PartialMenu data={data} index={index} partials={partials} />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -101,13 +108,18 @@ const Table = ({ headerTitle, dataSource, columns, partials }: TableProps) => {
                                             }
                                         </div>
                                     </div>
-                                )) 
+                                ))
                             }
                         </div>
                     ) : (
                         <div>No results found.</div>
                     )
                 }
+            </div>
+            <div className="card-footer d-flex align-items-center">
+                <div className="ml-auto">
+                    <CustomPagination />
+                </div>
             </div>
         </div>
     );
