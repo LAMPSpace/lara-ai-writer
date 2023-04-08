@@ -1,11 +1,20 @@
-const Search = () => {
+import { Dispatch, SetStateAction } from "react";
+
+type SearchProps = {
+    searchValue: string;
+    setSearchValue: Dispatch<SetStateAction<string>>
+}
+
+const Search = ({ searchValue, setSearchValue }: SearchProps) => {
     return (
         <input
-            className="form-control"
             type="text"
-            value=""
+            name="search"
+            className="form-control font-size-md rounded-left"
+            id="i-search"
             placeholder="Search"
-        />
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)} />
     );
 };
 

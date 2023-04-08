@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { IconType } from "react-icons";
 
 export type TemplateCardItemInformation = {
@@ -36,9 +37,9 @@ const TemplateCardItem = ({ templateCardItemInformation }: TemplateCardItemProps
                     </div>
                 </div>
 
-                <a href="/templates" className="text-dark font-weight-bold stretched-link text-decoration-none text-truncate mt-3 mb-1"
+                <Link href="/templates" className="text-dark font-weight-bold stretched-link text-decoration-none text-truncate mt-3 mb-1"
                     style={{ fontSize: templateCardItemInformation.titleFontSize }}
-                >{templateCardItemInformation.title}</a>
+                >{templateCardItemInformation.title}</Link>
 
                 <div className="text-muted" style={{ fontSize: templateCardItemInformation.contentFontSize }}>
                     {templateCardItemInformation.content}

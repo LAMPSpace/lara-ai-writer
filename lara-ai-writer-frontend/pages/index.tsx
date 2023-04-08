@@ -26,12 +26,12 @@ export default function Home() {
                                         Auto write your article with AI
                                     </p>
                                     <div className="pt-2 d-flex flex-column flex-sm-row justify-content-center">
-                                        <a
-                                            href="{{ route('login') }}"
+                                        <Link
+                                            href="/login"
                                             className="btn btn-primary btn-lg font-size-lg align-items-center mt-3"
                                         >
                                             <span className="d-none d-sm-block">Login</span>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

@@ -1,3 +1,4 @@
+import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import { MdInfo } from "react-icons/md";
 
 type OverviewCardInformation = {
@@ -21,7 +22,16 @@ const OverviewCard = ({ item }: OverviewCardProps) => {
                             {item.title}
                         </div>
                         {item.tooltip !== "" &&
-                            <div className="d-flex align-content-center ml-2" title={item.tooltip}><MdInfo /></div>
+                            <OverlayTrigger
+                                placement={'auto'}
+                                overlay={
+                                    <Tooltip id={`tooltip`}>
+                                        {item.tooltip}
+                                    </Tooltip>
+                                }
+                            >
+                                <span className="d-flex align-content-center ml-2"><MdInfo /></span>
+                            </OverlayTrigger>
                         }
                     </div>
                     <div className="font-weight-bold h4 mb-0">

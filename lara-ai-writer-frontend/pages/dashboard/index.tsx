@@ -9,6 +9,7 @@ import LinkButton from "@/components/Layouts/Shared/LinkButton";
 import { USER_MENU_LIST, ADMIN_MENU_LIST } from "@/components/Constants/menu-list.constant";
 import { DASHBOARD_CATEGORIES, DASHBOARD_FEATURE_BUTTONS } from "@/components/Constants/dashboard-page.constant";
 import { MdAssignment } from "react-icons/md";
+import Link from "next/link";
 
 const Dashboard = () => {
     const router = useRouter();
@@ -29,7 +30,7 @@ const Dashboard = () => {
                             <div className="row no-gutters w-100">
                                 <div className="d-flex col-12 col-lg-6 col-md-6 col-sm-12">
                                     <div className="flex-shrink-1">
-                                        <Image src={"/userImg.png"} alt="user-default-image" height={64} width={64} />
+                                        <Image src={"/userImg.png"} alt="user-default-image" className="rounded-circle" height={64} width={64} />
                                     </div>
                                     <div className="flex-grow-1 align-items-center ml-3">
                                         <h4 className="font-weight-medium mb-0">{user.name}</h4>
@@ -41,7 +42,7 @@ const Dashboard = () => {
                                                     </div>
 
                                                     <div className="d-inline-block ml-2">
-                                                        <a href="/plans" className="text-dark text-decoration-none">Plan</a>
+                                                        <Link href="/plans" className="text-dark text-decoration-none">Plan</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -51,8 +52,8 @@ const Dashboard = () => {
                                 <div className="d-flex flex-row-reverse align-items-center col-12 col-lg-6 col-md-6 col-sm-12">
                                     {DASHBOARD_FEATURE_BUTTONS.map((button, index) => {
                                         return (
-                                            <div className="ml-2">
-                                                <LinkButton item={button} key={"dashboard_link_button_" + index} />
+                                            <div className="ml-2" key={"dashboard_link_button_" + index}>
+                                                <LinkButton item={button} />
                                             </div>
                                         );
                                     })}
@@ -72,8 +73,8 @@ const Dashboard = () => {
                                     <div className="d-flex flex-row-reverse col-6 align-items-center px-2">
                                         {category.buttons.map((button, index) => {
                                             return (
-                                                <div className="ml-1">
-                                                    <LinkButton item={button} key={"dashboard_category_" + category.name + "_link_button_" + index} />
+                                                <div className="ml-1" key={"dashboard_category_" + category.name + "_link_button_" + index}>
+                                                    <LinkButton item={button} />
                                                 </div>
                                             );
                                         })}
@@ -82,8 +83,8 @@ const Dashboard = () => {
                                 <div className="row">
                                     {category.content.items.map((item, index) => {
                                         return (
-                                            <div className={"col-12 col-md-6 p-2 col-lg-" + 12 / category.content.perRow}>
-                                                <category.content.itemType item={item} key={"dashboard_category_" + category.name + "_item_" + index} />
+                                            <div className={"col-12 col-md-6 p-2 col-lg-" + 12 / category.content.perRow} key={"dashboard_category_" + category.name + "_item_" + index}>
+                                                <category.content.itemType item={item} />
                                             </div>
                                         );
                                     })}

@@ -78,13 +78,12 @@ const Sidebar = ({ menuList }: SidebarProps) => {
                 <div key={index}>
                     <li className="nav-item">
                         <a
-                            className={`nav-link d-flex px-4 ${
-                                menu.submenu.length > 0
+                            className={`nav-link d-flex px-4 ${menu.submenu.length > 0
                                     ? "collapsed"
                                     : menu.link === activeMenu
-                                    ? "active"
-                                    : ""
-                            }`}
+                                        ? "active"
+                                        : ""
+                                }`}
                             onClick={() => handleMenuClick(menu.link)}
                             role="button"
                         >
@@ -105,21 +104,18 @@ const Sidebar = ({ menuList }: SidebarProps) => {
                     </li>
                     {menu.submenu.length > 0 && (
                         <div
-                            className={`collapse submenu ${
-                                menu.link === activeSubmenu ? "show" : ""
-                            } ${
-                                menu.submenu.find((submenu) => submenu.link === activeSubmenu)
+                            className={`collapse submenu ${menu.link === activeSubmenu ? "show" : ""
+                                } ${menu.submenu.find((submenu) => submenu.link === activeSubmenu)
                                     ? "show"
                                     : ""
-                            } ${isMenuOpen ? "show" : ""}`}
+                                } ${isMenuOpen ? "show" : ""}`}
                             id={`submenu-${index}`}
                         >
                             {menu.submenu.map((submenu, index) => (
                                 <Link
                                     key={`submenu-${index}`}
-                                    className={`nav-link px-4 d-flex text-truncate ${
-                                        submenu.link === activeSubmenu ? "active" : ""
-                                    } `}
+                                    className={`nav-link px-4 d-flex text-truncate ${submenu.link === activeSubmenu ? "active" : ""
+                                        } `}
                                     href={submenu.link}
                                 >
                                     <span className="sidebar-icon d-flex align-items-center">

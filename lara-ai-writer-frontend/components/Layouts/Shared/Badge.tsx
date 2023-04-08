@@ -1,6 +1,6 @@
 type BadgeProps = {
     content: string;
-    color: string;
+    color?: string;     //Hex color
     fontSize: number;
 }
 
