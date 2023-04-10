@@ -5,8 +5,10 @@ namespace App\{namespace};
 
 class {name} {extends} {implements}
 {    
+    protected $model;
+
     public function __construct({model}$model)
     {
-        parent::__construct($model);
+        $this->model = $model;
     }
 }
