@@ -18,11 +18,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name' => 'Content'],
-            ['name' => 'Marketing'],
-            ['name' => 'Other'],
-            ['name' => 'Social'],
-            ['name' => 'Website']
+            ['name' => 'Content', 'color' => 'green'],
+            ['name' => 'Marketing', 'color' => 'cyan'],
+            ['name' => 'Other', 'color' => 'black'],
+            ['name' => 'Social', 'color' => 'yellow'],
+            ['name' => 'Website', 'color' => 'red']
         ];
 
         $templates = [

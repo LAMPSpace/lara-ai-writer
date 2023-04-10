@@ -15,6 +15,7 @@ class Category extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
+        'name',
+        'color'
     ];
 }

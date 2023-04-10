@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->string('name', 255);
+            $table->string('color', 20)->default('black');
         });
     }
 
