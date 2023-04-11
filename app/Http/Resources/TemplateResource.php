@@ -16,7 +16,8 @@ class TemplateResource extends JsonResource
     {
         return [
             'uuid' => $this->uuid,
-            'categories_uuid' => $this->categories_uuid,
+            'category' => $this->category,
+            'color' => $this->color,
             'name' => $this->name,
             'icon' => $this->icon,
             'route' => $this->route,
