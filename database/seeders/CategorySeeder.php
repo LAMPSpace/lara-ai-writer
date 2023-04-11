@@ -61,7 +61,8 @@ class CategorySeeder extends Seeder
 
         foreach ($categories as $category) {
             $item = Category::factory()->create([
-                'name' => $category['name']
+                'name' => $category['name'],
+                'color' => $category['color']
             ]);
 
             foreach ($templates as $template) {
