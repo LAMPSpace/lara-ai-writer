@@ -1,6 +1,6 @@
 import { LinkButtonInformation } from "@/components/Layouts/Shared/LinkButton";
 import { FilterFields } from "@/components/Layouts/Shared/Table/Filter";
-import { colorTheme, StatusColor } from "../theme-color.constant";
+import { StatusColor } from "../theme-color.constant";
 
 export const ADMIN_USERS_FEATURE_BUTTONS: LinkButtonInformation[] = [
     {
@@ -20,8 +20,8 @@ export const ADMIN_USERS_FEATURE_BUTTONS: LinkButtonInformation[] = [
 
 
 export const ADMIN_USERS_STATUS_COLORS: StatusColor = {
-    'active': colorTheme.success,
-    'inactive': colorTheme.danger,
+    'active': 'success',
+    'inactive': 'danger',
 };
 
 export const ADMIN_USERS_STATUS_FONT_SIZE = 12;
