@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Head from "next/head";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import { ADMIN_MENU_LIST } from "@/components/Constants/menu-list.constant";
 import Sidebar from "@/components/Layouts/Shared/Sidebar";
 import Breadcrumbs from "@/components/Layouts/Shared/Breadcrumbs";
 import Title from "@/components/Layouts/Shared/Title";
 import Table from "@/components/Layouts/Shared/Table";
-import { ADMIN_USERS_FEATURE_BUTTONS, ADMIN_USERS_STATUS_COLORS, ADMIN_USERS_STATUS_FONT_SIZE, ADMIN_USERS_FILTER_FIELDS, StatusColor, ADMIN_USERS_PARTIAL_MENU } from "@/components/Constants/admin/users-page.constant";
 import Badge from "@/components/Layouts/Shared/Badge";
+import { StatusColor } from "@/components/Constants/theme-color.constant";
+import { ADMIN_USERS_FEATURE_BUTTONS, ADMIN_USERS_STATUS_COLORS, ADMIN_USERS_STATUS_FONT_SIZE, ADMIN_USERS_FILTER_FIELDS, ADMIN_USERS_PARTIAL_MENU } from "@/components/Constants/admin/users-page.constant";
+import { ADMIN_MENU_LIST } from "@/components/Constants/menu-list.constant";
 
 const getStatusColor = (text: keyof StatusColor) => {
     return ADMIN_USERS_STATUS_COLORS[text];
@@ -32,7 +33,7 @@ const dataSource = [
     {
         id: 3,
         name: "John Doe 3",
-        email: "johndoe2@gmail.com",
+        email: "johndoe3@gmail.com",
         status: "Active"
     },
 ];
@@ -104,6 +105,7 @@ const ManageUserPage = () => {
                         columns={columns}
                         partials={ADMIN_USERS_PARTIAL_MENU}
                         filterFields={ADMIN_USERS_FILTER_FIELDS}
+                        exportFile={false}
                     />
                 </div>
             </DashboardLayout>
