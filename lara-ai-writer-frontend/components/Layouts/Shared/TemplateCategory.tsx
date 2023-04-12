@@ -2,7 +2,6 @@ import Badge from "./Badge";
 import TemplateCardItem, { TemplateCardItemInformation } from "./TemplateCardItem";
 
 export type TemplateCategoryInformation = {
-    name: string;
     title: string;
     color: string;
     perRow: number;
@@ -22,7 +21,7 @@ const TemplateCategory = ({ templateCategoryInformation }: TemplateCategoryProps
                 {templateCategoryInformation.items.map((item, index) => {
                     return (
                         <div className={"col-12 col-md-6 col-lg-" + 12 / templateCategoryInformation.perRow + " py-2"}
-                            key={"template_category_" + templateCategoryInformation.name + "_item_" + index}>
+                            key={"template_category_" + templateCategoryInformation.title.toLowerCase() + "_item_" + index}>
                             <TemplateCardItem templateCardItemInformation={item} />
                         </div>
                     );
