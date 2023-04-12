@@ -1,7 +1,7 @@
 import { MdFilterAlt } from "react-icons/md";
 import { Dropdown, ButtonGroup, Button, Form } from "react-bootstrap";
 
-interface FilterFieldItem {
+type FilterFieldItem = {
     value: string | number;
     title: string;
 }
@@ -20,7 +20,7 @@ const Filter = ({ filterFields }: FilterProps) => {
     return (
         <Dropdown as={ButtonGroup} autoClose="outside" align={'end'}>
             <Dropdown.Toggle id="dropdown-split-basic" bsPrefix="p-0" className="d-flex align-items-center rounded-right p-1" style={{ borderRadius: 'inherit' }}>
-                <MdFilterAlt className="fill-current width-4 height-4" />
+                <MdFilterAlt className="fill-current" />
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="px-2">

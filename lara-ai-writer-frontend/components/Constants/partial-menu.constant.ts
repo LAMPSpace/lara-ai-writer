@@ -1,6 +1,6 @@
 import { ConfirmModalInformation } from "../Layouts/Shared/ConfirmModal";
 import { LinkButtonInformation } from "../Layouts/Shared/LinkButton";
-import { MdEdit, MdEditDocument, MdOutlinePreview, MdOutlineFileDownload, MdOutlineDelete, MdOutlineDisabledByDefault } from "react-icons/md";
+import { MdEdit, MdEditDocument, MdOutlinePreview, MdOutlineFileDownload, MdOutlineDelete, MdOutlineDisabledByDefault, MdStarOutline } from "react-icons/md";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { colorTheme } from "./theme-color.constant";
 
@@ -79,7 +79,7 @@ type PartialConfirmModals = {
     [key: string]: ConfirmModalInformation
 }
 
-export const partialConfirmModals: PartialConfirmModals = {
+export const partialDestroyConfirmModals: PartialConfirmModals = {
     'delete': {
         buttonIcon: MdOutlineDelete,
         text: 'Delete',
@@ -89,6 +89,7 @@ export const partialConfirmModals: PartialConfirmModals = {
         title: 'Delete',
         content: 'Do you want to delete this user?',
         confirmText: 'Delete',
+        confirmButtonColor: colorTheme.danger,
         cancelText: 'Cancel'
     },
     'disable': {
@@ -100,6 +101,22 @@ export const partialConfirmModals: PartialConfirmModals = {
         title: 'Disable',
         content: 'Do you want to disable this user?',
         confirmText: 'Disable',
+        confirmButtonColor: colorTheme.danger,
         cancelText: 'Cancel'
     }
+};
+
+export const partialWarningConfirmModals: PartialConfirmModals = {
+    'favorite': {
+        buttonIcon: MdStarOutline,
+        text: 'Favorite',
+        textColor: 'black',
+        height: partialItemHeight,
+        fontSize: partialItemFontSize,
+        title: 'Favorite',
+        content: 'Do you want to add this item to your favorites?',
+        confirmText: 'Favorite',
+        confirmButtonColor: colorTheme.warning,
+        cancelText: 'Cancel'
+    },
 };

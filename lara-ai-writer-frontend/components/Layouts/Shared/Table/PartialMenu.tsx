@@ -2,7 +2,7 @@ import { Dropdown, ButtonGroup } from "react-bootstrap";
 import ConfirmModal from "../ConfirmModal";
 import LinkButton from "../LinkButton";
 import { MdMoreHoriz } from "react-icons/md";
-import { partialConfirmModals, partialLinkButtons } from "@/components/Constants/partial-menu.constant";
+import { partialDestroyConfirmModals, partialWarningConfirmModals, partialLinkButtons } from "@/components/Constants/partial-menu.constant";
 
 type PartialMenuProps = {
     partials: string[];
@@ -26,10 +26,18 @@ const PartialMenu = ({ partials, data, index }: PartialMenuProps) => {
                     ) : (<></>);
                 })}
                 <Dropdown.Divider />
-                {Object.keys(partialConfirmModals).map(confirmModal => {
+                {Object.keys(partialWarningConfirmModals).map(confirmModal => {
                     return partials.includes(confirmModal) ? (
                         <Dropdown.Item className="py-1 px-0">
-                            <ConfirmModal item={partialConfirmModals[confirmModal]} />
+                            <ConfirmModal item={partialWarningConfirmModals[confirmModal]} />
+                        </Dropdown.Item>
+                    ) : (<></>);
+                })}
+                <Dropdown.Divider />
+                {Object.keys(partialDestroyConfirmModals).map(confirmModal => {
+                    return partials.includes(confirmModal) ? (
+                        <Dropdown.Item className="py-1 px-0">
+                            <ConfirmModal item={partialDestroyConfirmModals[confirmModal]} />
                         </Dropdown.Item>
                     ) : (<></>);
                 })}

@@ -1,9 +1,23 @@
 import Search from "./Search";
 import Filter, { FilterFields } from "./Filter";
-import { MdMoreHoriz } from "react-icons/md";
+import { MdMoreHoriz, MdOutlineFileDownload } from "react-icons/md";
 import { useState } from "react";
 import PartialMenu from "./PartialMenu";
 import CustomPagination from "../CustomPagination";
+import ConfirmModal, { ConfirmModalInformation } from "../ConfirmModal";
+
+const exportButton: ConfirmModalInformation = {
+    buttonIcon: MdOutlineFileDownload,
+    text: '',
+    textColor: 'white',
+    height: null,
+    fontSize: 12,
+    title: 'Export',
+    content: 'Are you sure to export this table?',
+    confirmText: 'Export',
+    confirmButtonColor: 'primary',
+    cancelText: 'Close',
+}
 
 export type columnType = {
     title?: string,
@@ -18,10 +32,11 @@ type TableProps = {
     dataSource?: any[],
     columns?: Array<columnType>,
     partials?: string[],
-    filterFields?: FilterFields[]
+    filterFields?: FilterFields[],
+    exportFile?: boolean,
 };
 
-const Table = ({ headerTitle, dataSource, columns, partials, filterFields }: TableProps) => {
+const Table = ({ headerTitle, dataSource, columns, partials, filterFields, exportFile }: TableProps) => {
     const [searchValue, setSearchValue] = useState("");
 
     return (
@@ -37,6 +52,11 @@ const Table = ({ headerTitle, dataSource, columns, partials, filterFields }: Tab
                         <div className="input-group input-group-sm">
                             <Search searchValue={searchValue} setSearchValue={setSearchValue} />
                             <Filter filterFields={filterFields ? filterFields : []} />
+                            {exportFile &&
+                                <div className="btn btn-sm btn-primary d-flex align-items-center p-0 ml-1">
+                                    <ConfirmModal item={exportButton} />
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -99,7 +119,6 @@ const Table = ({ headerTitle, dataSource, columns, partials, filterFields }: Tab
                                                     <div className="col-auto">
                                                         <div className="form-row">
                                                             <div className="col">
-                                                                {/* {partials(data, index)} */}
                                                                 <PartialMenu data={data} index={index} partials={partials} />
                                                             </div>
                                                         </div>
