@@ -19,8 +19,12 @@ type LinkButtonProps = {
     item: LinkButtonInformation
 };
 
-const LinkButton = (
-    { item }: LinkButtonProps) => {
+const LinkButton = ({ item }: LinkButtonProps) => {
+
+    const getMargin = () => {
+        return item.buttonIcon !== null && item.title !== '' ? ' mr-1' : '';
+    }
+
     return (
         <Link href={item.buttonLink}
             className={"btn " + item.buttonType + " d-flex align-items-center w-100"}
@@ -29,14 +33,14 @@ const LinkButton = (
                 {item.buttonIcon &&
                     <>
                         {item.iconColor === null && <item.buttonIcon
-                            className="fill-current mr-1 p-1"
+                            className={"fill-current" + getMargin()}
                             style={{
                                 height: item.height / 2,
                                 width: item.height / 2
                             }}
                         />}
                         {item.iconColor !== null && <item.buttonIcon
-                            className="fill-current mr-1 p-1"
+                            className={"fill-current p-1" + getMargin()}
                             style={{
                                 color: item.iconColor,
                                 backgroundColor: item.iconColor + "20",

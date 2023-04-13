@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { IconType } from "react-icons";
+import DynamicIcon from "./DynamicIcon";
 
 export type TemplateCardItemInformation = {
-    cardIcon: IconType;
+    cardIcon: string;
     iconColor: string;
     title: string;
     content: string;
@@ -22,17 +22,10 @@ const TemplateCardItem = ({ templateCardItemInformation }: TemplateCardItemProps
                 <div className="row">
                     <div className="col">
                         <div className="d-flex position-relative align-items-center justify-content-left flex-shrink-0">
-                            <div className="position-absolute opacity-10 top-0 right-0 bottom-0 left-0 border-radius-xl"></div>
-                            <templateCardItemInformation.cardIcon
-                                className="fill-current mr-1 p-1"
-                                style={{
-                                    color: templateCardItemInformation.iconColor,
-                                    backgroundColor: templateCardItemInformation.iconColor + "20",
-                                    borderRadius: 8,
-                                    height: templateCardItemInformation.iconSize,
-                                    width: templateCardItemInformation.iconSize
-                                }}
-                            />
+                            <DynamicIcon
+                                iconName={templateCardItemInformation.cardIcon}
+                                iconColor={templateCardItemInformation.iconColor}
+                                iconSize={templateCardItemInformation.iconSize} />
                         </div>
                     </div>
                 </div>

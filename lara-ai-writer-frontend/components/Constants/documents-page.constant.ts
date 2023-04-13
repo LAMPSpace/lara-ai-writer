@@ -1,8 +1,7 @@
-import { LinkButtonInformation } from "@/components/Layouts/Shared/LinkButton";
-import { FilterFields } from "@/components/Layouts/Shared/Table/Filter";
-import { StatusColor } from "../theme-color.constant";
+import { LinkButtonInformation } from "../Layouts/Shared/LinkButton";
+import { FilterFields } from "../Layouts/Shared/Table/Filter";
 
-export const ADMIN_USERS_FEATURE_BUTTONS: LinkButtonInformation[] = [
+export const DOCUMENTS_FEATURE_BUTTONS: LinkButtonInformation[] = [
     {
         buttonIcon: null,
         iconColor: null,
@@ -10,23 +9,23 @@ export const ADMIN_USERS_FEATURE_BUTTONS: LinkButtonInformation[] = [
         titleColor: '',
         rightArrow: false,
         buttonType: 'btn-primary',
-        buttonLink: '/users/create',
+        buttonLink: '/documents',
         buttonBackgroundColor: "",
         height: 40,
         fontSize: 14
-    },
+    }
 ];
 
+export const DOCUMENTS_PARTIAL_MENU = [
+    'edit',
+    'view',
+    'favorite',
+    'delete',
+];
 
+export const DOCUMENTS_STATUS_FONT_SIZE = 12;
 
-export const ADMIN_USERS_STATUS_COLORS: StatusColor = {
-    'active': 'success',
-    'inactive': 'danger',
-};
-
-export const ADMIN_USERS_STATUS_FONT_SIZE = 12;
-
-export const ADMIN_USERS_FILTER_FIELDS: FilterFields[] = [
+export const DOCUMENTS_FILTER_FIELDS: FilterFields[] = [
     {
         name: 'search-by',
         title: 'Search by',
@@ -36,26 +35,26 @@ export const ADMIN_USERS_FILTER_FIELDS: FilterFields[] = [
                 value: 'name'
             },
             {
-                title: 'Email',
-                value: 'email'
+                title: 'Result',
+                value: 'result'
             }
         ]
     },
     {
-        name: 'role',
-        title: 'Role',
+        name: 'favorite',
+        title: 'Favorite',
         items: [
             {
                 title: 'All',
                 value: 'all'
             },
             {
-                title: 'User',
-                value: 'user'
+                title: 'No',
+                value: 'no'
             },
             {
-                title: 'Admin',
-                value: 'admin'
+                title: 'Yes',
+                value: 'yes'
             }
         ]
     },
@@ -71,10 +70,6 @@ export const ADMIN_USERS_FILTER_FIELDS: FilterFields[] = [
                 title: 'Name',
                 value: 'name'
             },
-            {
-                title: 'Email',
-                value: 'email'
-            }
         ]
     },
     {
@@ -113,9 +108,4 @@ export const ADMIN_USERS_FILTER_FIELDS: FilterFields[] = [
             },
         ]
     }
-];
-
-export const ADMIN_USERS_PARTIAL_MENU = [
-    'edit',
-    'delete',
 ];

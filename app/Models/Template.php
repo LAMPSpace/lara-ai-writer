@@ -23,4 +23,20 @@ class Template extends Model
         'prompt',
         'views'
     ];
+
+    public function scopeGetAllInformation($query)
+    {
+        return $query->join('categories', 'categories.uuid', 'templates.categories_uuid')
+            ->select(
+                'templates.uuid as uuid',
+                'templates.name as name',
+                'templates.route as route',
+                'templates.icon as icon',
+                'templates.description as description',
+                'templates.prompt as prompt',
+                'templates.views as views',
+                'categories.name as category',
+                'categories.color as color',
+            );
+    }
 }

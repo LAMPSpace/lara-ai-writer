@@ -7,11 +7,12 @@ export type ConfirmModalInformation = {
     buttonIcon: IconType | null;
     text: string;
     textColor: string;
-    height: number;
+    height: number | null;
     fontSize: number;
     title: string;
     content: string;
     confirmText: string;
+    confirmButtonColor: string;
     cancelText: string;
 }
 
@@ -25,13 +26,17 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const getMargin = () => {
+        return item.buttonIcon !== null && item.text !== '' ? ' mr-1' : '';
+    }
+
     return (
         <>
-            <Button className='w-100 bg-transparent border-none' style={{ height: item.height }} onClick={handleShow}>
+            {item.height && <Button className='w-100 bg-transparent border-none' style={{ height: item.height }} onClick={handleShow}>
                 <span className="d-flex flex-row align-items-center">
                     {item.buttonIcon &&
                         <item.buttonIcon
-                            className="fill-current mr-1 p-1"
+                            className={"fill-current" + getMargin()}
                             style={{
                                 color: item.textColor,
                                 height: item.height / 2,
@@ -41,6 +46,21 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
                     <span style={{ color: item.textColor, fontSize: item.fontSize }}>{item.text}</span>
                 </span>
             </Button>
+            }
+
+            {!item.height && <Button className='w-100 bg-transparent border-none' onClick={handleShow}>
+                <span className="d-flex flex-row align-items-center">
+                    {item.buttonIcon &&
+                        <item.buttonIcon
+                            className={"fill-current" + getMargin()}
+                            style={{
+                                color: item.textColor,
+                            }}
+                        />}
+                    <span style={{ color: item.textColor, fontSize: item.fontSize }}>{item.text}</span>
+                </span>
+            </Button>
+            }
 
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header>
@@ -51,7 +71,7 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
                     <Button className='border-none' variant="secondary" onClick={handleClose}>
                         {item.cancelText}
                     </Button>
-                    <Button className='border-none' style={{ backgroundColor: item.textColor }} onClick={handleClose}>
+                    <Button className='border-none' style={{ backgroundColor: item.confirmButtonColor }} onClick={handleClose}>
                         {item.confirmText}
                     </Button>
                 </Modal.Footer>

@@ -2,7 +2,7 @@ import { Dropdown, ButtonGroup } from "react-bootstrap";
 import ConfirmModal from "../ConfirmModal";
 import LinkButton from "../LinkButton";
 import { MdMoreHoriz } from "react-icons/md";
-import { partialConfirmModals, partialLinkButtons } from "@/components/Constants/partial-menu.constant";
+import { partialDestroyConfirmModals, partialWarningConfirmModals, partialLinkButtons } from "@/components/Constants/partial-menu.constant";
 
 type PartialMenuProps = {
     partials: string[];
@@ -11,6 +11,9 @@ type PartialMenuProps = {
 }
 
 const PartialMenu = ({ partials, data, index }: PartialMenuProps) => {
+    const warningConfirmModals = Object.keys(partialWarningConfirmModals).filter(key => partials.includes(key));
+    const destroyConfirmModals = Object.keys(partialDestroyConfirmModals).filter(key => partials.includes(key));
+
     return (
         <Dropdown as={ButtonGroup}>
             <Dropdown.Toggle id="dropdown-split-basic" bsPrefix="p-0" className="rounded border-0 bg-white d-flex align-items-center btn-sm text-primary p-1">
@@ -25,14 +28,30 @@ const PartialMenu = ({ partials, data, index }: PartialMenuProps) => {
                         </Dropdown.Item>
                     ) : (<></>);
                 })}
-                <Dropdown.Divider />
-                {Object.keys(partialConfirmModals).map(confirmModal => {
-                    return partials.includes(confirmModal) ? (
-                        <Dropdown.Item className="py-1 px-0">
-                            <ConfirmModal item={partialConfirmModals[confirmModal]} />
-                        </Dropdown.Item>
-                    ) : (<></>);
-                })}
+                {warningConfirmModals.length > 0 &&
+                    <>
+                        <Dropdown.Divider />
+                        {warningConfirmModals.map(confirmModal => {
+                            return (
+                                <Dropdown.Item className="py-1 px-0">
+                                    <ConfirmModal item={partialWarningConfirmModals[confirmModal]} />
+                                </Dropdown.Item>
+                            );
+                        })}
+                    </>
+                }
+                {destroyConfirmModals.length > 0 &&
+                    <>
+                        <Dropdown.Divider />
+                        {destroyConfirmModals.map(confirmModal => {
+                            return (
+                                <Dropdown.Item className="py-1 px-0">
+                                    <ConfirmModal item={partialDestroyConfirmModals[confirmModal]} />
+                                </Dropdown.Item>
+                            );
+                        })}
+                    </>
+                }
             </Dropdown.Menu>
         </Dropdown>
     );

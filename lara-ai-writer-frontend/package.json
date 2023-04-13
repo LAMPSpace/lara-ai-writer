@@ -10,6 +10,8 @@
     },
     "dependencies": {
         "@laylazi/bootstrap-rtl-scss": "^4.6.2-1",
+        "@loadable/component": "^5.15.3",
+        "@types/loadable__component": "^5.13.4",
         "@types/node": "18.15.11",
         "@types/react": "18.0.31",
         "@types/react-dom": "18.0.11",
