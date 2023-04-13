@@ -5,7 +5,7 @@ type ColorTheme = {
 export const backgroundOpacity = "20";
 
 export const colorTheme: ColorTheme = {
-    primary: '#2bc58b',
+    primary: '#225385',
     success: '#28a745',
     danger: '#dc3545',
     warning: '#ffc107',
