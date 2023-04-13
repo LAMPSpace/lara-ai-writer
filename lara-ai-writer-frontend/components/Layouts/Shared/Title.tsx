@@ -1,8 +1,9 @@
-import LinkButton, { LinkButtonInformation } from "./LinkButton";
+import LinkButton from "./LinkButton";
+import { FEATURE_BUTTONS } from "@/components/Constants/feature-buttons.constant";
 
 type TitleProps = {
     title: string;
-    buttons: LinkButtonInformation[];
+    buttons: string[];
 };
 
 const Title = ({ title, buttons }: TitleProps) => {
@@ -11,10 +12,10 @@ const Title = ({ title, buttons }: TitleProps) => {
             <div className="flex-grow-1">
                 <h1 className="h2 mb-3 d-inline-block">{title}</h1>
             </div>
-            {buttons.map((button, index) => {
+            {Object.keys(FEATURE_BUTTONS).filter(featureButtonName => buttons.includes(featureButtonName)).map((button, index) => {
                 return (
-                    <div className="ml-2" key={"dashboard_link_button_" + index}>
-                        <LinkButton item={button} />
+                    <div className="ml-2" key={title + "_link_button_" + index}>
+                        <LinkButton item={FEATURE_BUTTONS[button]} />
                     </div>
                 );
             })}

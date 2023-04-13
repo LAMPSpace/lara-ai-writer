@@ -1,13 +1,11 @@
 import Router from "next/router";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { MdExpandLess, MdOutlineExpandMore } from "react-icons/md";
-import { IconType } from "react-icons";
 import { useRouter } from "next/router";
+import DynamicIcon from "./DynamicIcon";
 
 export type Menu = {
     name: string;
-    icon: IconType;
     link: string;
     submenu: Menu[];
 };
@@ -79,24 +77,26 @@ const Sidebar = ({ menuList }: SidebarProps) => {
                     <li className="nav-item">
                         <a
                             className={`nav-link d-flex px-4 ${menu.submenu.length > 0
-                                    ? "collapsed"
-                                    : menu.link === activeMenu
-                                        ? "active"
-                                        : ""
+                                ? "collapsed"
+                                : menu.link === activeMenu
+                                    ? "active"
+                                    : ""
                                 }`}
                             onClick={() => handleMenuClick(menu.link)}
                             role="button"
                         >
                             <span className="sidebar-icon d-flex align-items-center">
-                                <menu.icon className="fill-current width-4 height-4 mr-3" />
+                                <div className="mr-3">
+                                    <DynamicIcon iconName={menu.name.toLowerCase()} iconBackground={false} iconColor={null} />
+                                </div>
                             </span>
                             <span className="flex-grow-1 text-truncate">{menu.name}</span>
                             {menu.submenu.length > 0 && (
                                 <span className="d-flex align-items-center ml-auto sidebar-expand">
                                     {menu.link === activeSubmenu ? (
-                                        <MdExpandLess className="fill-current width-4 height-4" />
+                                        <DynamicIcon iconName={'expand-less'} iconBackground={false} iconColor={null} />
                                     ) : (
-                                        <MdOutlineExpandMore className="fill-current width-4 height-4" />
+                                        <DynamicIcon iconName={'expand-more'} iconBackground={false} iconColor={null} />
                                     )}
                                 </span>
                             )}
@@ -119,7 +119,7 @@ const Sidebar = ({ menuList }: SidebarProps) => {
                                     href={submenu.link}
                                 >
                                     <span className="sidebar-icon d-flex align-items-center">
-                                        <submenu.icon className="fill-current width-4 height-4 mr-3" />
+                                        <DynamicIcon iconName={submenu.name.toLowerCase()} iconBackground={false} iconColor={null} />
                                     </span>
                                     <span className="flex-grow-1 text-truncate">
                                         {submenu.name}

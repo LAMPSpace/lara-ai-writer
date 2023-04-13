@@ -1,8 +1,4 @@
-import LinkButton, { LinkButtonInformation } from "../Layouts/Shared/LinkButton";
-import { MdAssignment, MdDraw, MdViewHeadline, MdDescription } from "react-icons/md";
-import { HiPlus } from "react-icons/hi";
-import { RiArticleFill, RiAdvertisementFill } from "react-icons/ri";
-import { BsJournalText } from "react-icons/bs";
+import LinkButton from "../Layouts/Shared/LinkButton";
 import OverviewCard from "../Layouts/Shared/OverviewCard";
 
 type CategoryContent = {
@@ -14,35 +10,13 @@ type CategoryContent = {
 type CategoryItem = {
     name: string;
     title: string;
-    buttons: LinkButtonInformation[];
+    buttons: string[];
     content: CategoryContent;
 };
 
-export const DASHBOARD_FEATURE_BUTTONS: LinkButtonInformation[] = [
-    {
-        buttonIcon: HiPlus,
-        iconColor: null,
-        title: 'New document',
-        titleColor: '',
-        rightArrow: true,
-        buttonType: 'btn-primary',
-        buttonLink: '/documents',
-        buttonBackgroundColor: "",
-        height: 40,
-        fontSize: 14
-    },
-    {
-        buttonIcon: MdAssignment,
-        iconColor: null,
-        title: 'Plans',
-        titleColor: '',
-        rightArrow: false,
-        buttonType: 'btn-outline-primary',
-        buttonLink: '/plans',
-        buttonBackgroundColor: "",
-        height: 40,
-        fontSize: 14
-    },
+export const DASHBOARD_FEATURE_BUTTONS: string[] = [
+    'new-document',
+    'plans'
 ];
 
 export const DASHBOARD_CATEGORIES: CategoryItem[] = [
@@ -85,26 +59,18 @@ export const DASHBOARD_CATEGORIES: CategoryItem[] = [
         name: 'templates',
         title: 'Templates',
         buttons: [
-            {
-                buttonIcon: null,
-                iconColor: null,
-                title: 'View all',
-                titleColor: '',
-                rightArrow: true,
-                buttonType: 'btn-outline-primary',
-                buttonLink: '/templates',
-                buttonBackgroundColor: "",
-                height: 30,
-                fontSize: 10
-            },
+            'view-all'
         ],
         content: {
             itemType: LinkButton,
             perRow: 3,
             items: [
                 {
-                    buttonIcon: RiArticleFill,
-                    iconColor: '#00CC00',
+                    icon: {
+                        iconName: 'RiArticleFill',
+                        iconColor: 'green',
+                        iconBackground: true
+                    },
                     title: 'Article',
                     titleColor: '',
                     rightArrow: true,
@@ -115,8 +81,11 @@ export const DASHBOARD_CATEGORIES: CategoryItem[] = [
                     fontSize: 16
                 },
                 {
-                    buttonIcon: MdDraw,
-                    iconColor: '#003366',
+                    icon: {
+                        iconName: 'MdDraw',
+                        iconColor: 'darkblue',
+                        iconBackground: true
+                    },
                     title: 'Freestyle',
                     titleColor: '',
                     rightArrow: true,
@@ -127,8 +96,11 @@ export const DASHBOARD_CATEGORIES: CategoryItem[] = [
                     fontSize: 16
                 },
                 {
-                    buttonIcon: BsJournalText,
-                    iconColor: '#00CC00',
+                    icon: {
+                        iconName: 'BsJournalText',
+                        iconColor: 'green',
+                        iconBackground: true
+                    },
                     title: 'Blog post',
                     titleColor: '',
                     rightArrow: true,
@@ -139,8 +111,11 @@ export const DASHBOARD_CATEGORIES: CategoryItem[] = [
                     fontSize: 16
                 },
                 {
-                    buttonIcon: MdViewHeadline,
-                    iconColor: '#CC3300',
+                    icon: {
+                        iconName: 'MdViewHeadline',
+                        iconColor: 'red',
+                        iconBackground: true
+                    },
                     title: 'Headline',
                     titleColor: '',
                     rightArrow: true,
@@ -151,8 +126,11 @@ export const DASHBOARD_CATEGORIES: CategoryItem[] = [
                     fontSize: 16
                 },
                 {
-                    buttonIcon: RiAdvertisementFill,
-                    iconColor: '#111111',
+                    icon: {
+                        iconName: 'RiAdvertisementFill',
+                        iconColor: 'darkblue',
+                        iconBackground: true
+                    },
                     title: 'Advertisement',
                     titleColor: '',
                     rightArrow: true,
@@ -163,8 +141,11 @@ export const DASHBOARD_CATEGORIES: CategoryItem[] = [
                     fontSize: 16
                 },
                 {
-                    buttonIcon: MdDescription,
-                    iconColor: '#CC3300',
+                    icon: {
+                        iconName: 'MdDescription',
+                        iconColor: 'red',
+                        iconBackground: true
+                    },
                     title: 'Meta description',
                     titleColor: '',
                     rightArrow: true,

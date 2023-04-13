@@ -12,6 +12,7 @@ import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
 import { StatusColor } from "@/components/Constants/theme-color.constant";
 import { DOCUMENTS_FEATURE_BUTTONS, DOCUMENTS_FILTER_FIELDS, DOCUMENTS_PARTIAL_MENU, DOCUMENTS_STATUS_FONT_SIZE } from "@/components/Constants/documents-page.constant";
 import { ADMIN_USERS_STATUS_COLORS } from "@/components/Constants/admin/users-page.constant";
+import DynamicIcon from "@/components/Layouts/Shared/DynamicIcon";
 
 const Documents = () => {
     const router = useRouter();
@@ -49,13 +50,14 @@ const Documents = () => {
             key: "name",
             className: "col-12 col-lg-5",
             render: (text?: string, record?: any) => (
-                <div className="d-flex align-items-center">
-                    <img
-                        src={"https://ui-avatars.com/api/?name=" + record.name.replace(" ", "+") + "&background=0D8ABC&color=fff"}
-                        className="flex-shrink-0 rounded-circle width-10 height-10 mr-1"
-                        alt="Avatar"
-                    />
-                    <Link href={`/users/${record.id}`}>{text}</Link>
+                <div className="d-flex">
+                    <div>
+                        <DynamicIcon iconName={'MdAdsClick'} iconColor={'red'} iconBackground={false} />
+                    </div>
+                    <div>
+                        <Link href={`/users/${record.id}`}>{text}</Link>
+                        <p className="m-0">Testtttttttttt</p>
+                    </div>
                 </div>
             )
         },

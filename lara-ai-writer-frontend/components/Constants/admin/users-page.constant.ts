@@ -1,23 +1,9 @@
-import { LinkButtonInformation } from "@/components/Layouts/Shared/LinkButton";
 import { FilterFields } from "@/components/Layouts/Shared/Table/Filter";
 import { StatusColor } from "../theme-color.constant";
 
-export const ADMIN_USERS_FEATURE_BUTTONS: LinkButtonInformation[] = [
-    {
-        buttonIcon: null,
-        iconColor: null,
-        title: 'New',
-        titleColor: '',
-        rightArrow: false,
-        buttonType: 'btn-primary',
-        buttonLink: '/users/create',
-        buttonBackgroundColor: "",
-        height: 40,
-        fontSize: 14
-    },
+export const ADMIN_USERS_FEATURE_BUTTONS: string[] = [
+    'new'
 ];
-
-
 
 export const ADMIN_USERS_STATUS_COLORS: StatusColor = {
     'active': 'success',

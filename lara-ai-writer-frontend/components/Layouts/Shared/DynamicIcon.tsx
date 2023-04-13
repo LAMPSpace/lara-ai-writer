@@ -1,12 +1,14 @@
 import { LoadableComponent } from "next/dynamic";
 import loadable from "@loadable/component";
 import { IconBaseProps } from "react-icons/lib";
-import { getColorCode, getIconBackgroundColor } from "@/components/Helpers/color.helper";
+import { iconList } from "@/components/Constants/default-icon.constant";
+import { getColorCode, getIconBackgroundColor } from "@/helpers/color.helper";
 
-interface DynamicIconProps {
+export interface DynamicIconProps {
     iconName: string;
-    iconColor: string;
-    iconSize: number;
+    iconColor: string | null;
+    iconSize?: number;
+    iconBackground: boolean;
 }
 
 const getIconName = (icon: string): string => {
@@ -15,9 +17,9 @@ const getIconName = (icon: string): string => {
     }).join('');
 }
 
-const DynamicIcon = ({ iconName, iconColor, iconSize }: DynamicIconProps) => {
+const DynamicIcon = ({ iconName, iconColor, iconSize, iconBackground }: DynamicIconProps) => {
     const iconProps: IconBaseProps = { size: iconSize };
-    const name = getIconName(iconName);
+    const name = Object.keys(iconList).includes(iconName) ? iconList[iconName] : getIconName(iconName);
     const lib = name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').split(" ")[0].toLocaleLowerCase();
     const ElementIcon: LoadableComponent = loadable(() => import(`react-icons/${lib}/index.js`), {
         resolveComponent: (el: JSX.Element) => el[name as keyof JSX.Element]
@@ -26,7 +28,7 @@ const DynamicIcon = ({ iconName, iconColor, iconSize }: DynamicIconProps) => {
         <div className="d-flex align-items-center justify-content-center p-1"
             style={{
                 color: getColorCode(iconColor),
-                backgroundColor: getIconBackgroundColor(iconColor),
+                backgroundColor: iconBackground ? getIconBackgroundColor(iconColor) : 'transparent',
                 borderRadius: 8,
             }}>
             <ElementIcon {...iconProps} />

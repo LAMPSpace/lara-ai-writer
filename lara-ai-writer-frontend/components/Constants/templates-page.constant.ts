@@ -1,19 +1,7 @@
-import { LinkButtonInformation } from "../Layouts/Shared/LinkButton";
 import { TemplateCategoryInformation } from "../Layouts/Shared/TemplateCategory";
 
-export const TEMPLATES_FEATURE_BUTTONS: LinkButtonInformation[] = [
-    {
-        buttonIcon: null,
-        iconColor: null,
-        title: 'New',
-        titleColor: '',
-        rightArrow: false,
-        buttonType: 'btn-primary',
-        buttonLink: '/templates',
-        buttonBackgroundColor: "",
-        height: 40,
-        fontSize: 14
-    }
+export const TEMPLATES_FEATURE_BUTTONS: string[] = [
+    'new'
 ];
 
 export const templateCategoryInformation = {

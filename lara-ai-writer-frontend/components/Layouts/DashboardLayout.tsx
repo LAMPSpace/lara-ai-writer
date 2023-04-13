@@ -3,9 +3,9 @@ import DashboardHeader from "./Shared/DashboardHeader";
 import Footer from "./Shared/Footer";
 import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
-import { MdLogout, MdOutlineAdminPanelSettings, MdSupervisedUserCircle } from "react-icons/md";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import DynamicIcon from "./Shared/DynamicIcon";
 
 const DashboardLayout = ({ user, sidebar, children }: any) => {
     const router = useRouter();
@@ -47,9 +47,9 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                     >
                                         <span className="d-flex align-items-center">
                                             {isAdminRoute ? (
-                                                <MdSupervisedUserCircle className="fill-current width-4 height-4" />
+                                                <DynamicIcon iconName={'supervised-user-circle'} iconBackground={false} iconColor={null} />
                                             ) : (
-                                                <MdOutlineAdminPanelSettings className="fill-current width-4 height-4" />
+                                                <DynamicIcon iconName={'admin-panel-setting'} iconBackground={false} iconColor={null} />
                                             )}
                                         </span>
                                     </Link>
@@ -92,7 +92,7 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                     title="Logout"
                                     onClick={logout}
                                 >
-                                    <MdLogout className="fill-current width-4 height-4" />
+                                    <DynamicIcon iconName={'logout'} iconBackground={false} iconColor={null} />
                                 </Link>
                             </div>
                         </div>

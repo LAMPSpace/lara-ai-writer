@@ -1,7 +1,5 @@
 import { ConfirmModalInformation } from "../Layouts/Shared/ConfirmModal";
 import { LinkButtonInformation } from "../Layouts/Shared/LinkButton";
-import { MdEdit, MdEditDocument, MdOutlinePreview, MdOutlineFileDownload, MdOutlineDelete, MdOutlineDisabledByDefault, MdStarOutline } from "react-icons/md";
-import { FaFileInvoiceDollar } from "react-icons/fa";
 import { colorTheme } from "./theme-color.constant";
 
 const partialItemHeight = 40;
@@ -14,8 +12,11 @@ type PartialLinkButtons = {
 
 export const partialLinkButtons: PartialLinkButtons = {
     'edit': {
-        buttonIcon: MdEdit,
-        iconColor: null,
+        icon: {
+            iconName: 'MdEdit',
+            iconColor: null,
+            iconBackground: false
+        },
         title: 'Edit',
         titleColor: "",
         rightArrow: false,
@@ -26,8 +27,11 @@ export const partialLinkButtons: PartialLinkButtons = {
         fontSize: partialItemFontSize
     },
     'document': {
-        buttonIcon: MdEditDocument,
-        iconColor: null,
+        icon: {
+            iconName: 'MdEditDocument',
+            iconColor: null,
+            iconBackground: false
+        },
         title: 'Document',
         titleColor: "",
         rightArrow: false,
@@ -38,8 +42,11 @@ export const partialLinkButtons: PartialLinkButtons = {
         fontSize: partialItemFontSize
     },
     'view': {
-        buttonIcon: MdOutlinePreview,
-        iconColor: null,
+        icon: {
+            iconName: 'MdOutlinePreview',
+            iconColor: null,
+            iconBackground: false
+        },
         title: 'View',
         titleColor: "",
         rightArrow: false,
@@ -50,8 +57,11 @@ export const partialLinkButtons: PartialLinkButtons = {
         fontSize: partialItemFontSize
     },
     'invoice': {
-        buttonIcon: FaFileInvoiceDollar,
-        iconColor: null,
+        icon: {
+            iconName: 'FaFileInvoiceDollar',
+            iconColor: null,
+            iconBackground: false
+        },
         title: 'Invoice',
         titleColor: "",
         rightArrow: false,
@@ -62,8 +72,11 @@ export const partialLinkButtons: PartialLinkButtons = {
         fontSize: partialItemFontSize
     },
     'download': {
-        buttonIcon: MdOutlineFileDownload,
-        iconColor: null,
+        icon: {
+            iconName: 'MdOutlineFileDownload',
+            iconColor: null,
+            iconBackground: false
+        },
         title: 'Download',
         titleColor: "",
         rightArrow: false,
@@ -81,7 +94,11 @@ type PartialConfirmModals = {
 
 export const partialDestroyConfirmModals: PartialConfirmModals = {
     'delete': {
-        buttonIcon: MdOutlineDelete,
+        icon: {
+            iconName: 'MdOutlineDelete',
+            iconColor: 'danger',
+            iconBackground: false
+        },
         text: 'Delete',
         textColor: colorTheme.danger,
         height: partialItemHeight,
@@ -93,7 +110,11 @@ export const partialDestroyConfirmModals: PartialConfirmModals = {
         cancelText: 'Cancel'
     },
     'disable': {
-        buttonIcon: MdOutlineDisabledByDefault,
+        icon: {
+            iconName: 'MdOutlineDisabledByDefault',
+            iconColor: 'danger',
+            iconBackground: false
+        },
         text: 'Disable',
         textColor: colorTheme.danger,
         height: partialItemHeight,
@@ -108,7 +129,11 @@ export const partialDestroyConfirmModals: PartialConfirmModals = {
 
 export const partialWarningConfirmModals: PartialConfirmModals = {
     'favorite': {
-        buttonIcon: MdStarOutline,
+        icon: {
+            iconName: 'MdStarOutline',
+            iconColor: 'black',
+            iconBackground: false
+        },
         text: 'Favorite',
         textColor: 'black',
         height: partialItemHeight,

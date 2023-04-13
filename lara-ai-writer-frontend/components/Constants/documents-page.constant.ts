@@ -1,19 +1,7 @@
-import { LinkButtonInformation } from "../Layouts/Shared/LinkButton";
 import { FilterFields } from "../Layouts/Shared/Table/Filter";
 
-export const DOCUMENTS_FEATURE_BUTTONS: LinkButtonInformation[] = [
-    {
-        buttonIcon: null,
-        iconColor: null,
-        title: 'New',
-        titleColor: '',
-        rightArrow: false,
-        buttonType: 'btn-primary',
-        buttonLink: '/documents',
-        buttonBackgroundColor: "",
-        height: 40,
-        fontSize: 14
-    }
+export const DOCUMENTS_FEATURE_BUTTONS: string[] = [
+    'new'
 ];
 
 export const DOCUMENTS_PARTIAL_MENU = [

@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { IconType } from "react-icons";
-import { MdChevronRight } from "react-icons/md";
+import DynamicIcon, { DynamicIconProps } from "./DynamicIcon";
+import { getMargin } from "@/helpers/text.helper";
 
 export type LinkButtonInformation = {
-    buttonIcon: IconType | null;
-    iconColor: string | null;       //Hex color
+    icon: DynamicIconProps | null;
     title: string;
     titleColor: string | "",
     rightArrow: boolean;
@@ -21,41 +20,18 @@ type LinkButtonProps = {
 
 const LinkButton = ({ item }: LinkButtonProps) => {
 
-    const getMargin = () => {
-        return item.buttonIcon !== null && item.title !== '' ? ' mr-1' : '';
-    }
-
-    return (
+    return item && (
         <Link href={item.buttonLink}
             className={"btn " + item.buttonType + " d-flex align-items-center w-100"}
             style={{ height: item.height, backgroundColor: item.buttonBackgroundColor }}>
             <span className="d-flex flex-row align-items-center">
-                {item.buttonIcon &&
-                    <>
-                        {item.iconColor === null && <item.buttonIcon
-                            className={"fill-current" + getMargin()}
-                            style={{
-                                height: item.height / 2,
-                                width: item.height / 2
-                            }}
-                        />}
-                        {item.iconColor !== null && <item.buttonIcon
-                            className={"fill-current p-1" + getMargin()}
-                            style={{
-                                color: item.iconColor,
-                                backgroundColor: item.iconColor + "20",
-                                borderRadius: 8,
-                                height: item.height / 2,
-                                width: item.height / 2
-                            }}
-                        />}
-                    </>
-
+                {item.icon &&
+                    <DynamicIcon iconName={item.icon.iconName} iconColor={item.icon.iconColor} iconSize={item.height / 3} iconBackground={item.icon.iconBackground} />
                 }
-                <span style={{ fontSize: item.fontSize, color: item.titleColor }}>{item.title}</span>
+                <span className={getMargin(item.icon, item.title)} style={{ fontSize: item.fontSize, color: item.titleColor }}>{item.title}</span>
             </span>
-            <span className="d-flex flex-row-reverse align-items-center ml-auto">
-                {item.rightArrow && <MdChevronRight className="fill-current width-6 height-6" />}
+            <span className={"d-flex flex-row-reverse align-items-center ml-auto"}>
+                {item.rightArrow && <DynamicIcon iconName={'right-arrow'} iconColor={null} iconBackground={false} iconSize={item.height / 3} />}
             </span>
         </Link>
     );
