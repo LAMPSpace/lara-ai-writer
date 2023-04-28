@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import DynamicIcon, { DynamicIconProps } from './DynamicIcon';
 import { getMargin } from '@/helpers/text.helper';
+import { getColorCode } from '@/helpers/color.helper';
 
 export type ConfirmModalInformation = {
     icon: DynamicIconProps;
@@ -34,7 +35,7 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
                     {item.icon &&
                         <DynamicIcon iconName={item.icon.iconName} iconColor={item.icon.iconColor} iconSize={item.icon.iconSize} iconBackground={false} />
                     }
-                    <span className={getMargin(item.icon, item.text)} style={{ color: item.textColor, fontSize: item.fontSize }}>{item.text}</span>
+                    <span className={getMargin(item.icon, item.text)} style={{ color: getColorCode(item.textColor), fontSize: item.fontSize }}>{item.text}</span>
                 </span>
             </Button>
             }
@@ -44,7 +45,7 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
                     {item.icon &&
                         <DynamicIcon iconName={item.icon.iconName} iconColor={item.icon.iconColor} iconBackground={false} />
                     }
-                    <span className={getMargin(item.icon, item.text)} style={{ color: item.textColor, fontSize: item.fontSize }}>{item.text}</span>
+                    <span className={getMargin(item.icon, item.text)} style={{ color: getColorCode(item.textColor), fontSize: item.fontSize }}>{item.text}</span>
                 </span>
             </Button>
             }
@@ -58,7 +59,7 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
                     <Button className='border-none' variant="secondary" onClick={handleClose}>
                         {item.cancelText}
                     </Button>
-                    <Button className='border-none' style={{ backgroundColor: item.confirmButtonColor }} onClick={handleClose}>
+                    <Button className='border-none' style={{ backgroundColor: getColorCode(item.confirmButtonColor) }} onClick={handleClose}>
                         {item.confirmText}
                     </Button>
                 </Modal.Footer>

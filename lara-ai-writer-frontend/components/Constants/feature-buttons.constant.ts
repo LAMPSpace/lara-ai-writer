@@ -46,13 +46,13 @@ export const FEATURE_BUTTONS: FeatureButtons = {
         height: 40,
         fontSize: 14
     },
-    'view-all': {
+    'view-all-template': {
         icon: null,
         title: 'View all',
         titleColor: '',
         rightArrow: true,
         buttonType: 'btn-outline-primary',
-        buttonLink: '',
+        buttonLink: '/templates',
         buttonBackgroundColor: "",
         height: 40,
         fontSize: 14

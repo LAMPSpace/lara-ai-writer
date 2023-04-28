@@ -8,7 +8,7 @@ import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import Sidebar from "@/components/Layouts/Shared/Sidebar";
 import LinkButton from "@/components/Layouts/Shared/LinkButton";
 import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
-import { DASHBOARD_CATEGORIES, DASHBOARD_FEATURE_BUTTONS } from "@/components/Constants/dashboard-page.constant";
+import { DASHBOARD_CATEGORIES, DASHBOARD_FEATURE_BUTTONS } from "@/components/Constants/pages/dashboard-page.constant";
 import { FEATURE_BUTTONS } from "@/components/Constants/feature-buttons.constant";
 import DynamicIcon from "@/components/Layouts/Shared/DynamicIcon";
 

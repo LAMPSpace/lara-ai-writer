@@ -1,6 +1,5 @@
 import { ConfirmModalInformation } from "../Layouts/Shared/ConfirmModal";
 import { LinkButtonInformation } from "../Layouts/Shared/LinkButton";
-import { colorTheme } from "./theme-color.constant";
 
 const partialItemHeight = 40;
 
@@ -100,13 +99,13 @@ export const partialDestroyConfirmModals: PartialConfirmModals = {
             iconBackground: false
         },
         text: 'Delete',
-        textColor: colorTheme.danger,
+        textColor: 'danger',
         height: partialItemHeight,
         fontSize: partialItemFontSize,
         title: 'Delete',
         content: 'Do you want to delete this user?',
         confirmText: 'Delete',
-        confirmButtonColor: colorTheme.danger,
+        confirmButtonColor: 'danger',
         cancelText: 'Cancel'
     },
     'disable': {
@@ -116,13 +115,13 @@ export const partialDestroyConfirmModals: PartialConfirmModals = {
             iconBackground: false
         },
         text: 'Disable',
-        textColor: colorTheme.danger,
+        textColor: 'danger',
         height: partialItemHeight,
         fontSize: partialItemFontSize,
         title: 'Disable',
         content: 'Do you want to disable this user?',
         confirmText: 'Disable',
-        confirmButtonColor: colorTheme.danger,
+        confirmButtonColor: 'danger',
         cancelText: 'Cancel'
     }
 };
@@ -141,7 +140,7 @@ export const partialWarningConfirmModals: PartialConfirmModals = {
         title: 'Favorite',
         content: 'Do you want to add this item to your favorites?',
         confirmText: 'Favorite',
-        confirmButtonColor: colorTheme.warning,
+        confirmButtonColor: 'warning',
         cancelText: 'Cancel'
     },
 };

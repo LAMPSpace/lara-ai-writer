@@ -1,4 +1,4 @@
-import { FilterFields } from "../Layouts/Shared/Table/Filter";
+import { FilterFields } from "@/components/Layouts/Shared/Table/Filter";
 
 export const DOCUMENTS_FEATURE_BUTTONS: string[] = [
     'new'
@@ -11,7 +11,7 @@ export const DOCUMENTS_PARTIAL_MENU = [
     'delete',
 ];
 
-export const DOCUMENTS_STATUS_FONT_SIZE = 12;
+export const DOCUMENTS_TEMPLATES_FONT_SIZE = 12;
 
 export const DOCUMENTS_FILTER_FIELDS: FilterFields[] = [
     {

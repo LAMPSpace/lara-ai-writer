@@ -12,7 +12,7 @@ import Badge from "@/components/Layouts/Shared/Badge";
 import Title from "@/components/Layouts/Shared/Title";
 import Search from "@/components/Layouts/Shared/Table/Search";
 import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
-import { TEMPLATES_FEATURE_BUTTONS, TemplateCategoryItems, TemplateItem, templateCategoryInformation } from "@/components/Constants/templates-page.constant";
+import { TEMPLATES_FEATURE_BUTTONS, TemplateCategoryItems, TemplateItem, templateCategoryInformation } from "@/components/Constants/pages/templates-page.constant";
 import { TemplateCardItemInformation } from "@/components/Layouts/Shared/TemplateCardItem";
 import { getColorCode } from "@/helpers/color.helper";
 

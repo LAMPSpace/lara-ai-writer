@@ -1,5 +1,5 @@
-import LinkButton from "../Layouts/Shared/LinkButton";
-import OverviewCard from "../Layouts/Shared/OverviewCard";
+import LinkButton from "@/components/Layouts/Shared/LinkButton";
+import OverviewCard from "@/components/Layouts/Shared/OverviewCard";
 
 type CategoryContent = {
     itemType: any;
@@ -59,7 +59,7 @@ export const DASHBOARD_CATEGORIES: CategoryItem[] = [
         name: 'templates',
         title: 'Templates',
         buttons: [
-            'view-all'
+            'view-all-template'
         ],
         content: {
             itemType: LinkButton,

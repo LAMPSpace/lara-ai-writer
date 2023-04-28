@@ -1,4 +1,4 @@
-import { TemplateCategoryInformation } from "../Layouts/Shared/TemplateCategory";
+import { TemplateCategoryInformation } from "../../Layouts/Shared/TemplateCategory";
 
 export const TEMPLATES_FEATURE_BUTTONS: string[] = [
     'new'
