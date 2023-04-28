@@ -16,7 +16,7 @@ const CustomPagination = () => {
     }
 
     return (
-        <ul className="pagination">
+        <ul className="pagination mb-0 py-2">
             <li className="page-item">
                 <button className="page-link h-100" aria-label="First" onClick={() => setCurrentPage('1')}>
                     <span aria-hidden="true"><DynamicIcon iconName={'first-page'} iconColor={null} iconBackground={false} /></span>

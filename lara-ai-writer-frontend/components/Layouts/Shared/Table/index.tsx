@@ -16,7 +16,7 @@ const exportButton: ConfirmModalInformation = {
     },
     text: '',
     textColor: 'white',
-    height: null,
+    height: defaultIconMinHeight * 2,
     fontSize: 12,
     title: 'Export',
     content: 'Are you sure to export this table?',

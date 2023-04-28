@@ -51,7 +51,7 @@ const columns = [
                     className="flex-shrink-0 rounded-circle width-10 height-10 mr-1"
                     alt="Avatar"
                 />
-                <Link href={`/users/${record.id}`}>{text}</Link>
+                <Link href={`/users/${record.uuid}`}>{text}</Link>
             </div>
         )
     },

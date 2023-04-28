@@ -26,7 +26,6 @@ const Sidebar = ({ menuList }: SidebarProps) => {
     };
 
     const toggleSubmenu = (link: string) => {
-        console.log(link);
         if (link === activeSubmenu) {
             setActiveSubmenu("");
         } else {

@@ -23,7 +23,7 @@ class DocumentResource extends JsonResource
             'template' => $this->template,
             'icon' => $this->icon,
             'color' => $this->color,
-            'create_at' => $this->create_at
+            'created_at' => $this->created_at
         ];
     }
 }

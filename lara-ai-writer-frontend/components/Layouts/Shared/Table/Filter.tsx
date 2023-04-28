@@ -37,7 +37,7 @@ const Filter = ({ filterFields }: FilterProps) => {
                             return (
                                 <div className="w-100 p-1" key={'filter_field_' + filterField.name}>
                                     <p className="my-1">{filterField.title}</p>
-                                    <Form.Select className="w-100 custom-select custom-select-sm">
+                                    <Form.Select onChange={(e) => console.log(e.target.value)} className="w-100 custom-select custom-select-sm">
                                         {filterField.items.length > 0 && filterField.items.map(item => {
                                             return (
                                                 <option value={item.value} key={'filter_field_' + filterField.name + "_" + item.value}>{item.title}</option>

@@ -33,7 +33,7 @@ class Document extends Model
                 'documents.result as result',
                 'documents.words as words',
                 'documents.favorite as favorite',
-                'documents.created_at as create_at',
+                'documents.created_at as created_at',
                 'templates.icon as icon',
                 'templates.name as template',
                 'categories.color as color',
