@@ -34,8 +34,9 @@ class Document extends Model
                 'documents.words as words',
                 'documents.favorite as favorite',
                 'documents.created_at as created_at',
+                'templates.uuid as template_uuid',
                 'templates.icon as icon',
-                'templates.name as template',
+                'templates.name as template_name',
                 'categories.color as color',
             );
     }

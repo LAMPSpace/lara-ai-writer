@@ -13,11 +13,13 @@ import Breadcrumbs from "@/components/Layouts/Shared/Breadcrumbs";
 import Title from "@/components/Layouts/Shared/Title";
 import { DOCUMENTS_FEATURE_BUTTONS, DOCUMENTS_FILTER_FIELDS, DOCUMENTS_PARTIAL_MENU, DOCUMENTS_TEMPLATES_FONT_SIZE } from "@/components/Constants/pages/documents-page.constant";
 import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
-
+import { useState } from "react";
+import { AdditionalFilterValues } from "@/components/Layouts/Shared/Table/Filter";
 
 const Documents = () => {
     const router = useRouter();
     const { user } = useAuth({ middleware: "auth" });
+    const [additionalFilterValues, setAdditionalFilterValues] = useState<AdditionalFilterValues | null>(null)
 
     const {
         data,
@@ -31,6 +33,41 @@ const Documents = () => {
             })
     );
 
+    const getFilterFields = () => {
+        let templates = [
+            {
+                title: 'All',
+                value: 'all'
+            },
+        ];
+        data.forEach((item: any) => {
+            let newTemplate = {
+                title: item.template,
+                value: item.template_uuid
+            };
+            if (templates.filter(item => item.title === newTemplate.title).length === 0) {
+                templates.push(newTemplate);
+            }
+        });
+        let tempFilterFields = DOCUMENTS_FILTER_FIELDS.slice();
+        tempFilterFields.splice(1, 0,
+            {
+                name: 'template',
+                title: 'Template',
+                items: templates
+            }
+        )
+        return tempFilterFields;
+    }
+
+    const handleChangeAdditionalFilterValues = (key: string, value: string) => {
+        let tempFilterValues: AdditionalFilterValues = {
+            'key': key,
+            'value': value
+        };
+        setAdditionalFilterValues(tempFilterValues);
+    }
+
     const columns = [
         {
             title: "Name",
@@ -43,7 +80,10 @@ const Documents = () => {
                         <DynamicIcon iconName={record.icon} iconColor={record.color} iconBackground={false} />
                     </div>
                     <div className="text-truncate">
-                        <Link className="text-truncate" href={`/documents/${record.uuid}`}>{text}</Link>
+                        <div className="d-flex">
+                            <Link className="text-truncate" href={`/documents/${record.uuid}`}>{text}</Link>
+                            {record.favorite && <DynamicIcon iconName="MdGrade" iconBackground={false} iconColor={'yellow'} />}
+                        </div>
                         <p className="m-0 text-truncate">{record.result}</p>
                     </div>
                 </div>
@@ -55,7 +95,7 @@ const Documents = () => {
             key: "template",
             className: "col-12 col-lg-2 d-flex align-items-center",
             render: (text: string, record?: any) => (
-                <button type="button" className="button-bagde btn border-0 bg-transparent p-0">
+                <button type="button" className="button-bagde btn border-0 bg-transparent p-0" onClick={() => handleChangeAdditionalFilterValues('template', record.template_uuid)}>
                     <Badge content={text} color={record.color} fontSize={DOCUMENTS_TEMPLATES_FONT_SIZE} />
                 </button>
             )
@@ -73,6 +113,7 @@ const Documents = () => {
             className: "col-12 col-lg-3",
         }
     ];
+
     return user ? (
         <>
             <Head>
@@ -93,14 +134,16 @@ const Documents = () => {
                         }
                     ]} />
                     <Title buttons={DOCUMENTS_FEATURE_BUTTONS} title="Documents" />
-                    <Table
-                        headerTitle="Users"
-                        dataSource={data}
-                        columns={columns}
-                        partials={DOCUMENTS_PARTIAL_MENU}
-                        filterFields={DOCUMENTS_FILTER_FIELDS}
-                        exportFile={true}
-                    />
+                    {data &&
+                        <Table
+                            headerTitle="Users"
+                            dataSource={data}
+                            columns={columns}
+                            partials={DOCUMENTS_PARTIAL_MENU}
+                            filterFields={getFilterFields()}
+                            exportFile={true}
+                            additionalFilterValues={additionalFilterValues}
+                        />}
                 </div>
             </DashboardLayout>
         </>
