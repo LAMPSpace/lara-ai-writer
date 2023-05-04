@@ -2,14 +2,15 @@ import { useAuth } from "@/hooks/auth";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 import Head from "next/head";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import Sidebar from "@/components/Layouts/Shared/Sidebar";
 import LinkButton from "@/components/Layouts/Shared/LinkButton";
-import { USER_MENU_LIST, ADMIN_MENU_LIST } from "@/components/Constants/menu-list.constant";
-import { DASHBOARD_CATEGORIES, DASHBOARD_FEATURE_BUTTONS } from "@/components/Constants/dashboard-page.constant";
-import { MdAssignment } from "react-icons/md";
-import Link from "next/link";
+import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
+import { DASHBOARD_CATEGORIES, DASHBOARD_FEATURE_BUTTONS } from "@/components/Constants/pages/dashboard-page.constant";
+import { FEATURE_BUTTONS } from "@/components/Constants/feature-buttons.constant";
+import DynamicIcon from "@/components/Layouts/Shared/DynamicIcon";
 
 const Dashboard = () => {
     const router = useRouter();
@@ -38,7 +39,7 @@ const Dashboard = () => {
                                             <div className="d-inline-block mt-2 mr-4">
                                                 <div className="d-flex">
                                                     <div className="d-inline-flex align-items-center">
-                                                        <MdAssignment className="'text-muted fill-current width-4 height-4'" />
+                                                        <DynamicIcon iconName={'plans'} iconColor={null} iconBackground={false} />
                                                     </div>
 
                                                     <div className="d-inline-block ml-2">
@@ -53,7 +54,7 @@ const Dashboard = () => {
                                     {DASHBOARD_FEATURE_BUTTONS.map((button, index) => {
                                         return (
                                             <div className="ml-2" key={"dashboard_link_button_" + index}>
-                                                <LinkButton item={button} />
+                                                <LinkButton item={FEATURE_BUTTONS[button]} />
                                             </div>
                                         );
                                     })}
@@ -74,7 +75,7 @@ const Dashboard = () => {
                                         {category.buttons.map((button, index) => {
                                             return (
                                                 <div className="ml-1" key={"dashboard_category_" + category.name + "_link_button_" + index}>
-                                                    <LinkButton item={button} />
+                                                    <LinkButton item={FEATURE_BUTTONS[button]} />
                                                 </div>
                                             );
                                         })}

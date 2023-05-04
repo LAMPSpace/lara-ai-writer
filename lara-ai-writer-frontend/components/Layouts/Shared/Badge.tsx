@@ -1,4 +1,4 @@
-import { getColorCode, getIconBackgroundColor } from "@/components/Helpers/color.helper";
+import { getColorCode, getIconBackgroundColor } from "@/helpers/color.helper";
 
 type BadgeProps = {
     content: string;

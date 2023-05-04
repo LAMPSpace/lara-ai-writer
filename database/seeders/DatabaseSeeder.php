@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             SettingSeeder::class,
             PlanSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            DocumentSeeder::class
         ]);
     }
 }

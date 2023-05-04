@@ -1,12 +1,10 @@
 import Link from "next/link";
-import DynamicIcon from "./DynamicIcon";
+import DynamicIcon, { DynamicIconProps } from "./DynamicIcon";
 
 export type TemplateCardItemInformation = {
-    cardIcon: string;
-    iconColor: string;
+    icon: DynamicIconProps | null;
     title: string;
     content: string;
-    iconSize: number;
     titleFontSize: number;
     contentFontSize: number;
 };
@@ -22,10 +20,12 @@ const TemplateCardItem = ({ templateCardItemInformation }: TemplateCardItemProps
                 <div className="row">
                     <div className="col">
                         <div className="d-flex position-relative align-items-center justify-content-left flex-shrink-0">
-                            <DynamicIcon
-                                iconName={templateCardItemInformation.cardIcon}
-                                iconColor={templateCardItemInformation.iconColor}
-                                iconSize={templateCardItemInformation.iconSize} />
+                            {templateCardItemInformation.icon && <DynamicIcon
+                                iconName={templateCardItemInformation.icon.iconName}
+                                iconColor={templateCardItemInformation.icon.iconColor}
+                                iconSize={templateCardItemInformation.icon.iconSize}
+                                iconBackground={templateCardItemInformation.icon.iconBackground} />
+                            }
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Interfaces\DocumentRepositoryInterface;
 use App\Repositories\TemplateRepository;
 use App\Interfaces\TemplateRepositoryInterface;
+use App\Repositories\DocumentRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -16,6 +18,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(TemplateRepositoryInterface::class, TemplateRepository::class);
+        $this->app->bind(DocumentRepositoryInterface::class, DocumentRepository::class);
     }
 
     /**

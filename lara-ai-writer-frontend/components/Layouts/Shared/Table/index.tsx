@@ -1,16 +1,22 @@
+import { useState } from "react";
 import Search from "./Search";
 import Filter, { FilterFields } from "./Filter";
-import { MdMoreHoriz, MdOutlineFileDownload } from "react-icons/md";
-import { useState } from "react";
 import PartialMenu from "./PartialMenu";
 import CustomPagination from "../CustomPagination";
 import ConfirmModal, { ConfirmModalInformation } from "../ConfirmModal";
+import DynamicIcon from "../DynamicIcon";
+import { defaultIconMinHeight } from "@/components/Constants/default-icon.constant";
 
 const exportButton: ConfirmModalInformation = {
-    buttonIcon: MdOutlineFileDownload,
+    icon: {
+        iconName: 'download',
+        iconSize: defaultIconMinHeight,
+        iconColor: null,
+        iconBackground: false
+    },
     text: '',
     textColor: 'white',
-    height: null,
+    height: defaultIconMinHeight * 2,
     fontSize: 12,
     title: 'Export',
     content: 'Are you sure to export this table?',
@@ -43,7 +49,7 @@ const Table = ({ headerTitle, dataSource, columns, partials, filterFields, expor
         <div className="card border-0 shadow-sm">
             <div className="card-header align-items-center">
                 <div className="row">
-                    <div className="col">
+                    <div className="col d-flex align-items-center">
                         <div className="font-weight-medium py-1">
                             {headerTitle || "Table"}
                         </div>
@@ -84,7 +90,7 @@ const Table = ({ headerTitle, dataSource, columns, partials, filterFields, expor
                                                 <div className="form-row">
                                                     <div className="col">
                                                         <div className="invisible btn d-flex align-items-center btn-sm text-primary">
-                                                            <MdMoreHoriz className="fill-current width-4 height-4" />
+                                                            <DynamicIcon iconName={'more'} iconColor={null} iconBackground={false} />
                                                         </div>
                                                     </div>
                                                 </div>

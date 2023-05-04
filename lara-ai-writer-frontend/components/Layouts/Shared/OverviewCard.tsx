@@ -1,5 +1,5 @@
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
-import { MdInfo } from "react-icons/md";
+import DynamicIcon from "./DynamicIcon";
 
 type OverviewCardInformation = {
     name: string;
@@ -30,7 +30,7 @@ const OverviewCard = ({ item }: OverviewCardProps) => {
                                     </Tooltip>
                                 }
                             >
-                                <span className="d-flex align-content-center ml-2"><MdInfo /></span>
+                                <span className="d-flex align-content-center ml-2"><DynamicIcon iconName={"tooltip"} iconBackground={false} iconColor={null} /></span>
                             </OverlayTrigger>
                         }
                     </div>

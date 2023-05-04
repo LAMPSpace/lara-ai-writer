@@ -12,9 +12,9 @@ import Badge from "@/components/Layouts/Shared/Badge";
 import Title from "@/components/Layouts/Shared/Title";
 import Search from "@/components/Layouts/Shared/Table/Search";
 import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
-import { TEMPLATES_FEATURE_BUTTONS, TemplateCategoryItems, TemplateItem, templateCategoryInformation } from "@/components/Constants/templates-page.constant";
+import { TEMPLATES_FEATURE_BUTTONS, TemplateCategoryItems, TemplateItem, templateCategoryInformation } from "@/components/Constants/pages/templates-page.constant";
 import { TemplateCardItemInformation } from "@/components/Layouts/Shared/TemplateCardItem";
-import { getColorCode } from "@/components/Helpers/color.helper";
+import { getColorCode } from "@/helpers/color.helper";
 
 const Templates = () => {
     const router = useRouter();
@@ -39,11 +39,14 @@ const Templates = () => {
         data && data.forEach((element) => {
             let name = element['category'].toLowerCase();
             let item: TemplateCardItemInformation = {
-                cardIcon: element['icon'],
-                iconColor: element['color'],
+                icon: {
+                    iconName: element['icon'],
+                    iconColor: element['color'],
+                    iconSize: templateCategoryInformation.itemsIconSize,
+                    iconBackground: true
+                },
                 title: element['name'],
                 content: element['description'],
-                iconSize: templateCategoryInformation.itemsIconSize,
                 titleFontSize: templateCategoryInformation.itemsTitleFontSize,
                 contentFontSize: templateCategoryInformation.itemsContentFontSize
             };

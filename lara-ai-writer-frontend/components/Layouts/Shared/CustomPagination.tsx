@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdOutlineNavigateNext, MdOutlineNavigateBefore, MdOutlineLastPage, MdOutlineFirstPage } from "react-icons/md";
+import DynamicIcon from "./DynamicIcon";
 
 const CustomPagination = () => {
     const [currentPage, setCurrentPage] = useState('1');
@@ -16,23 +16,23 @@ const CustomPagination = () => {
     }
 
     return (
-        <ul className="pagination">
+        <ul className="pagination mb-0 py-2">
             <li className="page-item">
-                <button className="page-link" aria-label="First" onClick={() => setCurrentPage('1')}>
-                    <span aria-hidden="true"><MdOutlineFirstPage /></span>
+                <button className="page-link h-100" aria-label="First" onClick={() => setCurrentPage('1')}>
+                    <span aria-hidden="true"><DynamicIcon iconName={'first-page'} iconColor={null} iconBackground={false} /></span>
                     <span className="sr-only">First</span>
                 </button>
             </li>
             <li className={currentPage === "1" ? "page-item disabled" : "page-item"}>
-                <button className="page-link" aria-label="Previous" onClick={() => setCurrentPage((parseInt(currentPage) - 1).toString())}>
-                    <span aria-hidden="true"><MdOutlineNavigateBefore /></span>
+                <button className="page-link h-100" aria-label="Previous" onClick={() => setCurrentPage((parseInt(currentPage) - 1).toString())}>
+                    <span aria-hidden="true"><DynamicIcon iconName={'navigate-before'} iconColor={null} iconBackground={false} /></span>
                     <span className="sr-only">Previous</span>
                 </button>
             </li>
             {pages.map((page, index) => {
                 return (
                     <li className={getPageItemClassName(page)} key={'page_item_' + index}>
-                        <button className="page-link" aria-label={page} onClick={() => setCurrentPage(page)}>
+                        <button className="page-link h-100" aria-label={page} onClick={() => setCurrentPage(page)}>
                             <span aria-hidden="true">{page}</span>
                             <span className="sr-only">{page}</span>
                         </button>
@@ -40,14 +40,14 @@ const CustomPagination = () => {
                 );
             })}
             <li className={currentPage === "60" ? "page-item disabled" : "page-item"}>
-                <button className="page-link" aria-label="Next" onClick={() => setCurrentPage((parseInt(currentPage) + 1).toString())}>
-                    <span aria-hidden="true"><MdOutlineNavigateNext /></span>
+                <button className="page-link h-100" aria-label="Next" onClick={() => setCurrentPage((parseInt(currentPage) + 1).toString())}>
+                    <span aria-hidden="true"><DynamicIcon iconName={'navigate-next'} iconColor={null} iconBackground={false} /></span>
                     <span className="sr-only">Next</span>
                 </button>
             </li>
             <li className="page-item">
-                <button className="page-link" aria-label="Last" onClick={() => setCurrentPage('60')}>
-                    <span aria-hidden="true"><MdOutlineLastPage /></span>
+                <button className="page-link h-100" aria-label="Last" onClick={() => setCurrentPage('60')}>
+                    <span aria-hidden="true"><DynamicIcon iconName={'last-page'} iconColor={null} iconBackground={false} /></span>
                     <span className="sr-only">Last</span>
                 </button>
             </li>

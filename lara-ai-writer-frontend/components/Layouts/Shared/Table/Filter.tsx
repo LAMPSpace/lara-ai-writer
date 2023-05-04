@@ -1,5 +1,6 @@
-import { MdFilterAlt } from "react-icons/md";
 import { Dropdown, ButtonGroup, Button, Form } from "react-bootstrap";
+import DynamicIcon from "../DynamicIcon";
+import { defaultIconMinHeight } from "@/components/Constants/default-icon.constant";
 
 type FilterFieldItem = {
     value: string | number;
@@ -20,7 +21,7 @@ const Filter = ({ filterFields }: FilterProps) => {
     return (
         <Dropdown as={ButtonGroup} autoClose="outside" align={'end'}>
             <Dropdown.Toggle id="dropdown-split-basic" bsPrefix="p-0" className="d-flex align-items-center rounded-right p-1" style={{ borderRadius: 'inherit' }}>
-                <MdFilterAlt className="fill-current" />
+                <DynamicIcon iconName={'filter'} iconBackground={false} iconColor={null} iconSize={defaultIconMinHeight} />
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="px-2">
@@ -36,7 +37,7 @@ const Filter = ({ filterFields }: FilterProps) => {
                             return (
                                 <div className="w-100 p-1" key={'filter_field_' + filterField.name}>
                                     <p className="my-1">{filterField.title}</p>
-                                    <Form.Select className="w-100 custom-select custom-select-sm">
+                                    <Form.Select onChange={(e) => console.log(e.target.value)} className="w-100 custom-select custom-select-sm">
                                         {filterField.items.length > 0 && filterField.items.map(item => {
                                             return (
                                                 <option value={item.value} key={'filter_field_' + filterField.name + "_" + item.value}>{item.title}</option>
