@@ -143,7 +143,8 @@ const Documents = () => {
                             filterFields={getFilterFields()}
                             exportFile={true}
                             additionalFilterValues={additionalFilterValues}
-                        />}
+                        />
+                    }
                 </div>
             </DashboardLayout>
         </>
