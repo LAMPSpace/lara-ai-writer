@@ -15,6 +15,7 @@ import { DOCUMENTS_FEATURE_BUTTONS, DOCUMENTS_FILTER_FIELDS, DOCUMENTS_PARTIAL_M
 import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
 import { useState } from "react";
 import { AdditionalFilterValues } from "@/components/Layouts/Shared/Table/Filter";
+import CustomTooltip from "@/components/Layouts/Shared/CustomTooltip";
 
 const Documents = () => {
     const router = useRouter();
@@ -82,7 +83,9 @@ const Documents = () => {
                     <div className="text-truncate">
                         <div className="d-flex">
                             <Link className="text-truncate" href={`/documents/${record.uuid}`}>{text}</Link>
-                            {record.favorite && <DynamicIcon iconName="MdGrade" iconBackground={false} iconColor={'yellow'} />}
+                            {record.favorite &&
+                                <CustomTooltip placement="top" content="Favorite" iconName="MdGrade" color="yellow" />
+                            }
                         </div>
                         <p className="m-0 text-truncate">{record.result}</p>
                     </div>

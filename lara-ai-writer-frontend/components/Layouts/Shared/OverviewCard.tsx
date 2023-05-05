@@ -1,5 +1,6 @@
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import DynamicIcon from "./DynamicIcon";
+import CustomTooltip from "./CustomTooltip";
 
 type OverviewCardInformation = {
     name: string;
@@ -22,16 +23,7 @@ const OverviewCard = ({ item }: OverviewCardProps) => {
                             {item.title}
                         </div>
                         {item.tooltip !== "" &&
-                            <OverlayTrigger
-                                placement={'auto'}
-                                overlay={
-                                    <Tooltip id={`tooltip`}>
-                                        {item.tooltip}
-                                    </Tooltip>
-                                }
-                            >
-                                <span className="d-flex align-content-center ml-2"><DynamicIcon iconName={"tooltip"} iconBackground={false} iconColor={null} /></span>
-                            </OverlayTrigger>
+                            <CustomTooltip content={item.tooltip} />
                         }
                     </div>
                     <div className="font-weight-bold h4 mb-0">
