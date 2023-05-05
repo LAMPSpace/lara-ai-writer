@@ -14,7 +14,8 @@ import { DOCUMENTS_FEATURE_BUTTONS, DOCUMENTS_FILTER_FIELDS, DOCUMENTS_PARTIAL_M
 import { USER_MENU_LIST } from "@/components/Constants/menu-list.constant";
 import { useState } from "react";
 import { AdditionalFilterValues } from "@/components/Layouts/Shared/Table/Filter";
-import CustomTooltip from "@/components/Layouts/Shared/CustomTooltip";
+import IconTooltip from "@/components/Layouts/Shared/IconTooltip";
+import TimeTooltip from "@/components/Layouts/Shared/TimeTooltip";
 
 const Documents = () => {
     const router = useRouter();
@@ -77,13 +78,13 @@ const Documents = () => {
             render: (text?: string, record?: any) => (
                 <div className="d-flex">
                     <div>
-                        <CustomTooltip iconName={record.icon} color={record.color} content={record.template} placement="top" />
+                        <IconTooltip iconName={record.icon} color={record.color} content={record.template} placement="top" />
                     </div>
                     <div className="text-truncate">
                         <div className="d-flex">
                             <Link className="text-truncate" href={`/documents/${record.uuid}`}>{text}</Link>
                             {record.favorite &&
-                                <CustomTooltip placement="top" content="Favorite" iconName="MdGrade" color="yellow" />
+                                <IconTooltip placement="top" content="Favorite" iconName="MdGrade" color="yellow" />
                             }
                         </div>
                         <p className="m-0 text-truncate">{record.result}</p>
@@ -113,6 +114,11 @@ const Documents = () => {
             dataIndex: "created_at",
             key: "created_at",
             className: "col-12 col-lg-3",
+            render: (text: string, record?: any) => (
+                <div className="d-flex w-100">
+                    <TimeTooltip time={text} placement="top" />
+                </div>
+            )
         }
     ];
 
