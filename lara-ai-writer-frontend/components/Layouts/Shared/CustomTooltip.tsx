@@ -6,10 +6,12 @@ export type CustomTooltipProps = {
     placement?: Placement;
     iconName?: string;
     content: string;
-    color?: string;
+    color?: string | null;
+    iconSize?: number;
+    iconBackground?: boolean;
 }
 
-const CustomTooltip = ({ placement, iconName, content, color }: CustomTooltipProps) => {
+const CustomTooltip = ({ placement, iconName, content, color, iconSize, iconBackground }: CustomTooltipProps) => {
     return (
         <OverlayTrigger
             placement={placement ? placement : 'auto'}
@@ -19,8 +21,8 @@ const CustomTooltip = ({ placement, iconName, content, color }: CustomTooltipPro
                 </Tooltip>
             }
         >
-            <span className="d-flex align-content-center ml-2">
-                <DynamicIcon iconName={iconName ? iconName : 'tooltip'} iconBackground={false} iconColor={color ? color : null} />
+            <span className="d-flex align-content-center">
+                <DynamicIcon iconName={iconName ? iconName : 'tooltip'} iconBackground={iconBackground ? iconBackground : false} iconColor={color ? color : null} iconSize={iconSize} />
             </span>
         </OverlayTrigger>
     );

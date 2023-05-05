@@ -5,7 +5,6 @@ import { useAuth } from "@/hooks/auth";
 import useSWR from "swr";
 import axios from "@/lib/axios";
 import Table from "@/components/Layouts/Shared/Table";
-import DynamicIcon from "@/components/Layouts/Shared/DynamicIcon";
 import Badge from "@/components/Layouts/Shared/Badge";
 import Sidebar from "@/components/Layouts/Shared/Sidebar";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
@@ -78,7 +77,7 @@ const Documents = () => {
             render: (text?: string, record?: any) => (
                 <div className="d-flex">
                     <div>
-                        <DynamicIcon iconName={record.icon} iconColor={record.color} iconBackground={false} />
+                        <CustomTooltip iconName={record.icon} color={record.color} content={record.template} placement="top" />
                     </div>
                     <div className="text-truncate">
                         <div className="d-flex">
