@@ -2,7 +2,7 @@ import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import { Placement } from "react-bootstrap/esm/types";
 import DynamicIcon from "./DynamicIcon";
 
-export type CustomTooltipProps = {
+export type IconTooltipProps = {
     placement?: Placement;
     iconName?: string;
     content: string;
@@ -11,7 +11,7 @@ export type CustomTooltipProps = {
     iconBackground?: boolean;
 }
 
-const CustomTooltip = ({ placement, iconName, content, color, iconSize, iconBackground }: CustomTooltipProps) => {
+const IconTooltip = ({ placement, iconName, content, color, iconSize, iconBackground }: IconTooltipProps) => {
     return (
         <OverlayTrigger
             placement={placement ? placement : 'auto'}
@@ -28,4 +28,4 @@ const CustomTooltip = ({ placement, iconName, content, color, iconSize, iconBack
     );
 }
 
-export default CustomTooltip;
+export default IconTooltip;

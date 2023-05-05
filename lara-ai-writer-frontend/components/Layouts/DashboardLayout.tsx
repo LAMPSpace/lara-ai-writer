@@ -5,7 +5,7 @@ import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import CustomTooltip from "./Shared/CustomTooltip";
+import IconTooltip from "./Shared/IconTooltip";
 
 const DashboardLayout = ({ user, sidebar, children }: any) => {
     const router = useRouter();
@@ -45,9 +45,9 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                     >
                                         <span className="d-flex align-items-center">
                                             {isAdminRoute ? (
-                                                <CustomTooltip iconName="supervised-user-circle" content="User" placement="top" />
+                                                <IconTooltip iconName="supervised-user-circle" content="User" placement="top" />
                                             ) : (
-                                                <CustomTooltip iconName="admin-panel-setting" content="Admin" placement="top" />
+                                                <IconTooltip iconName="admin-panel-setting" content="Admin" placement="top" />
                                             )}
                                         </span>
                                     </Link>
@@ -90,7 +90,7 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                     title="Logout"
                                     onClick={logout}
                                 >
-                                    <CustomTooltip iconName="logout" content="Logout" placement="top" />
+                                    <IconTooltip iconName="logout" content="Logout" placement="top" />
                                 </Link>
                             </div>
                         </div>

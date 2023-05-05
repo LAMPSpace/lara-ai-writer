@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Dropdown, ButtonGroup, Button, Form } from "react-bootstrap";
-import CustomTooltip from "../CustomTooltip";
+import IconTooltip from "../IconTooltip";
 
 type FilterFieldItem = {
     value: string | number;
@@ -62,7 +62,7 @@ const Filter = ({ filterFields, additionalFilterValues }: FilterProps) => {
     return (
         <Dropdown as={ButtonGroup} autoClose="outside" align={'end'}>
             <Dropdown.Toggle id="dropdown-split-basic" bsPrefix="p-0" className="d-flex align-items-center rounded-right p-1" style={{ borderRadius: 'inherit' }}>
-                <CustomTooltip iconName="filter" content="Filter" placement="top" />
+                <IconTooltip iconName="filter" content="Filter" placement="top" />
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="px-2">

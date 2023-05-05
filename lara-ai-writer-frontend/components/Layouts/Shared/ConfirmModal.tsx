@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { DynamicIconProps } from './DynamicIcon';
 import { getMargin } from '@/helpers/text.helper';
 import { getColorCode } from '@/helpers/color.helper';
-import CustomTooltip from './CustomTooltip';
+import IconTooltip from './IconTooltip';
 
 export type ConfirmModalInformation = {
     icon: DynamicIconProps;
@@ -34,7 +34,7 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
             <Button className='w-100 bg-transparent border-none' style={{ height: item.height ? item.height : undefined }} onClick={handleShow}>
                 <span className="d-flex flex-row align-items-center">
                     {item.icon &&
-                        <CustomTooltip iconName={item.icon.iconName} color={item.icon.iconColor} placement='top' content={item.title} iconSize={item.icon.iconSize} />
+                        <IconTooltip iconName={item.icon.iconName} color={item.icon.iconColor} placement='top' content={item.title} iconSize={item.icon.iconSize} />
                     }
                     <span className={getMargin(item.icon, item.text)} style={{ color: getColorCode(item.textColor), fontSize: item.fontSize }}>{item.text}</span>
                 </span>
