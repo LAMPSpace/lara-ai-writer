@@ -97,7 +97,7 @@ const Documents = () => {
             key: "template",
             className: "col-12 col-lg-2 d-flex align-items-center",
             render: (text: string, record?: any) => (
-                <button type="button" className="button-bagde btn border-0 bg-transparent p-0" onClick={() => handleChangeAdditionalFilterValues('template', record.template_uuid)}>
+                <button type="button" className="btn border-0 bg-transparent p-0 d-flex w-100" onClick={() => handleChangeAdditionalFilterValues('template', record.template_uuid)}>
                     <Badge content={text} color={record.color} fontSize={DOCUMENTS_TEMPLATES_FONT_SIZE} />
                 </button>
             )
