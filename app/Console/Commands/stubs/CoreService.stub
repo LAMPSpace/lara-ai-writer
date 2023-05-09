@@ -1,14 +1,13 @@
 <?php
 
 namespace App\{namespace};
-{useRepository}{useExtend}
+{useRepository}
 
-class {name} {extends}
-{
-    protected $repository;
-    
+class {name} extends BaseService
+{    
     public function __construct({repository}$repository)
     {
         $this->repository = $repository;
+        $this->model = $repository->getModel();
     }
 }

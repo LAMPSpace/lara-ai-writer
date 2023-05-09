@@ -51,12 +51,6 @@ class CreateService extends Command
         $stub = str_replace('{repository}', $repository, $stub);
         $stub = str_replace('{useRepository}', $useRepository, $stub);
 
-        $abstractClassName = $this->ask('What is the abstract class used for this service?');
-        $useExtend = $abstractClassName != "" ? "\nuse App\\" . $folder . "\\" . $abstractClassName . ';' : "";
-        $extends = $abstractClassName != "" ? "extends " . $abstractClassName : "";
-        $stub = str_replace('{extends}', $extends, $stub);
-        $stub = str_replace('{useExtend}', $useExtend, $stub);
-
         file_put_contents($path, $stub);                                //Put contents to the new file with 1st arg is file's path, 2nd arg is file's contents
         $this->info($name . ' is created successfully!');
     }
