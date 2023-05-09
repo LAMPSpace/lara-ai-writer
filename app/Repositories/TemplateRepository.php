@@ -11,9 +11,4 @@ class TemplateRepository extends BaseRepository implements TemplateRepositoryInt
     {
         $this->model = $model;
     }
-
-    public function all()
-    {
-        return $this->model->getAllInformation()->get();
-    }
 }

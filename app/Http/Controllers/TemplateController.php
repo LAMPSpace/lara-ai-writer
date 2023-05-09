@@ -16,9 +16,9 @@ class TemplateController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $templates = $this->service->all();
+        $templates = $this->service->list($request);
         return new TemplateCollection($templates);
     }
 

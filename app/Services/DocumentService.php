@@ -4,17 +4,11 @@ namespace App\Services;
 
 use App\Interfaces\DocumentRepositoryInterface;
 
-class DocumentService
+class DocumentService extends BaseService
 {
-    protected $repository;
-
     public function __construct(DocumentRepositoryInterface $repository)
     {
         $this->repository = $repository;
-    }
-
-    public function all()
-    {
-        return $this->repository->all();
+        $this->model = $repository->getModel();
     }
 }
