@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Search from "./Search";
-import Filter, { FilterFields } from "./Filter";
+import Filter, { FilterFields, AdditionalFilterValues } from "./Filter";
 import PartialMenu from "./PartialMenu";
 import CustomPagination from "../CustomPagination";
 import ConfirmModal, { ConfirmModalInformation } from "../ConfirmModal";
@@ -40,9 +40,10 @@ type TableProps = {
     partials?: string[],
     filterFields?: FilterFields[],
     exportFile?: boolean,
+    additionalFilterValues: AdditionalFilterValues | null
 };
 
-const Table = ({ headerTitle, dataSource, columns, partials, filterFields, exportFile }: TableProps) => {
+const Table = ({ headerTitle, dataSource, columns, partials, filterFields, exportFile, additionalFilterValues }: TableProps) => {
     const [searchValue, setSearchValue] = useState("");
 
     return (
@@ -57,7 +58,7 @@ const Table = ({ headerTitle, dataSource, columns, partials, filterFields, expor
                     <div className="col-auto">
                         <div className="input-group input-group-sm">
                             <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-                            <Filter filterFields={filterFields ? filterFields : []} />
+                            <Filter filterFields={filterFields ? filterFields : []} additionalFilterValues={additionalFilterValues} />
                             {exportFile &&
                                 <div className="btn btn-sm btn-primary d-flex align-items-center p-0 ml-1">
                                     <ConfirmModal item={exportButton} />

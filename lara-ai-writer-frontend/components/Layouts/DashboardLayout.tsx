@@ -5,7 +5,7 @@ import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import DynamicIcon from "./Shared/DynamicIcon";
+import IconTooltip from "./Shared/IconTooltip";
 
 const DashboardLayout = ({ user, sidebar, children }: any) => {
     const router = useRouter();
@@ -40,16 +40,14 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                 user.role === 'admin' && (
                                     <Link
                                         className="px-4 py-2 text-decoration-none text-secondary"
-                                        data-tooltip="true"
-                                        title="Dashboard"
                                         role="button"
                                         href={isAdminRoute ? "/dashboard" : "/admin"}
                                     >
                                         <span className="d-flex align-items-center">
                                             {isAdminRoute ? (
-                                                <DynamicIcon iconName={'supervised-user-circle'} iconBackground={false} iconColor={null} />
+                                                <IconTooltip iconName="supervised-user-circle" content="User" placement="top" />
                                             ) : (
-                                                <DynamicIcon iconName={'admin-panel-setting'} iconBackground={false} iconColor={null} />
+                                                <IconTooltip iconName="admin-panel-setting" content="Admin" placement="top" />
                                             )}
                                         </span>
                                     </Link>
@@ -92,7 +90,7 @@ const DashboardLayout = ({ user, sidebar, children }: any) => {
                                     title="Logout"
                                     onClick={logout}
                                 >
-                                    <DynamicIcon iconName={'logout'} iconBackground={false} iconColor={null} />
+                                    <IconTooltip iconName="logout" content="Logout" placement="top" />
                                 </Link>
                             </div>
                         </div>

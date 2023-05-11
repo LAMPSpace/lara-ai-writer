@@ -106,6 +106,7 @@ const ManageUserPage = () => {
                         partials={ADMIN_USERS_PARTIAL_MENU}
                         filterFields={ADMIN_USERS_FILTER_FIELDS}
                         exportFile={false}
+                        additionalFilterValues={null}
                     />
                 </div>
             </DashboardLayout>

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import DynamicIcon, { DynamicIconProps } from './DynamicIcon';
+import { DynamicIconProps } from './DynamicIcon';
 import { getMargin } from '@/helpers/text.helper';
 import { getColorCode } from '@/helpers/color.helper';
+import IconTooltip from './IconTooltip';
 
 export type ConfirmModalInformation = {
     icon: DynamicIconProps;
@@ -30,25 +31,14 @@ const ConfirmModal = ({ item }: ConfirmModalProps) => {
 
     return (
         <>
-            {item.height && <Button className='w-100 bg-transparent border-none' style={{ height: item.height }} onClick={handleShow}>
+            <Button className='w-100 bg-transparent border-none' style={{ height: item.height ? item.height : undefined }} onClick={handleShow}>
                 <span className="d-flex flex-row align-items-center">
                     {item.icon &&
-                        <DynamicIcon iconName={item.icon.iconName} iconColor={item.icon.iconColor} iconSize={item.icon.iconSize} iconBackground={false} />
+                        <IconTooltip iconName={item.icon.iconName} color={item.icon.iconColor} placement='top' content={item.title} iconSize={item.icon.iconSize} />
                     }
                     <span className={getMargin(item.icon, item.text)} style={{ color: getColorCode(item.textColor), fontSize: item.fontSize }}>{item.text}</span>
                 </span>
             </Button>
-            }
-
-            {!item.height && <Button className='w-100 bg-transparent border-none' onClick={handleShow}>
-                <span className="d-flex flex-row align-items-center">
-                    {item.icon &&
-                        <DynamicIcon iconName={item.icon.iconName} iconColor={item.icon.iconColor} iconBackground={false} />
-                    }
-                    <span className={getMargin(item.icon, item.text)} style={{ color: getColorCode(item.textColor), fontSize: item.fontSize }}>{item.text}</span>
-                </span>
-            </Button>
-            }
 
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header>

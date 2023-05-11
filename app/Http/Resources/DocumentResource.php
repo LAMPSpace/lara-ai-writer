@@ -20,7 +20,8 @@ class DocumentResource extends JsonResource
             'result' => $this->result,
             'words' => $this->words,
             'favorite' => $this->favorite,
-            'template' => $this->template,
+            'template_uuid' => $this->template_uuid,
+            'template' => $this->template_name,
             'icon' => $this->icon,
             'color' => $this->color,
             'created_at' => $this->created_at
