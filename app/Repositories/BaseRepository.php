@@ -43,6 +43,6 @@ abstract class BaseRepository
 
     public function find(string $uuid): ?Model
     {
-        return $this->model->find($uuid);
+        return $this->model->findOrFail($uuid);
     }
 }

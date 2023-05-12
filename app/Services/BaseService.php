@@ -29,6 +29,23 @@ abstract class BaseService
         return $this->repository->find($uuid);
     }
 
+    public function create(Request $request): Model
+    {
+        $data = $request->all();
+        return $this->repository->create($data);
+    }
+
+    public function update(Request $request, string $uuid): bool
+    {
+        $data = $request->all();
+        return $this->repository->update($data, $uuid);
+    }
+
+    public function delete(string $uuid): bool
+    {
+        return $this->repository->delete($uuid);
+    }
+
     public function getPerPage(array $params): array
     {
         $perPage = $params['per-page'] ?? $this->model->getPerPage();
