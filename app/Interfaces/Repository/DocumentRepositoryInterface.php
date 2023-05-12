@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Interfaces;
+namespace App\Interfaces\Repository;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-interface TemplateRepositoryInterface
+interface DocumentRepositoryInterface
 {
     public function getModel(): Model;
     public function list(array $params): Collection | LengthAwarePaginator;

@@ -3,9 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\Document;
-use App\Interfaces\DocumentRepositoryInterface;
+use App\Interfaces\Repository\DocumentRepositoryInterface;
 
-class DocumentRepository extends BaseRepository implements DocumentRepositoryInterface
+class DocumentRepository extends FilterSortRepository implements DocumentRepositoryInterface
 {
     public function __construct(Document $model)
     {

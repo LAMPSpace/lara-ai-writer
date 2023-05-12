@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
-use App\Interfaces\DocumentRepositoryInterface;
+use App\Interfaces\Repository\DocumentRepositoryInterface;
+use App\Interfaces\Service\DocumentServiceInterface;
 
-class DocumentService extends BaseService
+class DocumentService extends FilterSortService implements DocumentServiceInterface
 {
     public function __construct(DocumentRepositoryInterface $repository)
     {

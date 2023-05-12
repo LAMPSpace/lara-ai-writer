@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
-use App\Interfaces\TemplateRepositoryInterface;
+use App\Interfaces\Repository\TemplateRepositoryInterface;
+use App\Interfaces\Service\TemplateServiceInterface;
 
-class TemplateService extends BaseService
+class TemplateService extends FilterSortService implements TemplateServiceInterface
 {
     public function __construct(TemplateRepositoryInterface $repository)
     {

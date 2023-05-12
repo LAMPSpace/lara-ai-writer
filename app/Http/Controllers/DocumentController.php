@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\DocumentCollection;
-use App\Services\DocumentService;
+use App\Interfaces\Service\DocumentServiceInterface;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
     protected $service;
 
-    public function __construct(DocumentService $service)
+    public function __construct(DocumentServiceInterface $service)
     {
         $this->service = $service;
     }

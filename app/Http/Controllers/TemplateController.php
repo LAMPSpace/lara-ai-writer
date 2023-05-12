@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\TemplateCollection;
 use App\Http\Resources\TemplateResource;
-use App\Services\TemplateService;
+use App\Interfaces\Service\TemplateServiceInterface;
 use Illuminate\Http\Request;
 
 class TemplateController extends Controller
 {
     protected $service;
 
-    public function __construct(TemplateService $service)
+    public function __construct(TemplateServiceInterface $service)
     {
         $this->service = $service;
     }
