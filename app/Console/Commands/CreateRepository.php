@@ -51,8 +51,12 @@ class CreateRepository extends Command
         $stub = str_replace('{model}', $model, $stub);
         $stub = str_replace('{useModel}', $useModel, $stub);
 
-        $interfaceClassName = $this->ask('What is the interface class used for this repository?');
-        $useImplement = $interfaceClassName != "" ? "\nuse App\\Interfaces" . "\\" . $interfaceClassName . ';' : "";
+        $abstractClassName = $this->ask('What is the abstract class used for this repository?');
+        $extends = $abstractClassName != "" ? "extends " . $abstractClassName : "BaseRepository";
+        $stub = str_replace('{extends}', $extends, $stub);
+
+        $interfaceClassName = $this->ask('What is the interface used for this repository?');
+        $useImplement = $interfaceClassName != "" ? "\nuse App\\Interfaces\\Repository" . "\\" . $interfaceClassName . ';' : "";
         $implements = $interfaceClassName != "" ? "implements " . $interfaceClassName : "";
         $stub = str_replace('{implements}', $implements, $stub);
         $stub = str_replace('{useImplement}', $useImplement, $stub);
