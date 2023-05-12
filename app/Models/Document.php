@@ -4,9 +4,8 @@ namespace App\Models;
 
 use App\Traits\UUID;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class Document extends BaseModel
 {
     use HasFactory, UUID;
 
@@ -22,6 +21,51 @@ class Document extends Model
         'words',
         'favorite'
     ];
+
+    protected $defaultSortBy = 'created_at';
+
+    protected $sortFields = [
+        'created_at',
+        'name',
+        'uuid',
+        'display'
+    ];
+
+    protected $filterFields = [
+        'template',
+        'favorite'
+    ];
+
+    protected $stringFields = [
+        'name',
+        'result',
+        'template'
+    ];
+
+    protected $searchFields = [
+        'name',
+        'result',
+    ];
+
+    protected $customFields = [
+        'template' => 'templates.name',
+        'name' => 'documents.name'
+    ];
+
+    protected $customSorts = [
+        'display' => [
+            [
+                'sort-by' => 'color',
+                'sort' => 'asc'
+            ],
+            [
+                'sort-by' => 'icon',
+                'sort' => 'desc'
+            ],
+        ]
+    ];
+
+    protected $perPage = 10;
 
     public function scopeGetAllInformation($query)
     {

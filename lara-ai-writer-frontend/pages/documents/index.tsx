@@ -27,7 +27,7 @@ const Documents = () => {
         error,
     } = useSWR('/api/documents', () =>
         axios
-            .get('/api/documents')
+            .get('/api/documents?per-page=all')
             .then((res) => res.data.data)
             .catch((error) => {
                 if (error.response.status !== 409) throw error;

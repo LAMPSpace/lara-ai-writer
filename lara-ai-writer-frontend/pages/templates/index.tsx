@@ -27,7 +27,7 @@ const Templates = () => {
         error,
     } = useSWR('/api/templates', () =>
         axios
-            .get('/api/templates')
+            .get('/api/templates?per-page=all')
             .then((res) => res.data.data)
             .catch((error) => {
                 if (error.response.status !== 409) throw error;

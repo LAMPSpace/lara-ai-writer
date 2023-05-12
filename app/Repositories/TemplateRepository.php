@@ -3,17 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\Template;
-use App\Interfaces\TemplateRepositoryInterface;
+use App\Interfaces\Repository\TemplateRepositoryInterface;
 
-class TemplateRepository extends BaseRepository implements TemplateRepositoryInterface
+class TemplateRepository extends FilterSortRepository implements TemplateRepositoryInterface
 {
     public function __construct(Template $model)
     {
         $this->model = $model;
-    }
-
-    public function all()
-    {
-        return $this->model->getAllInformation()->get();
     }
 }

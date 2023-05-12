@@ -2,24 +2,14 @@
 
 namespace App\Services;
 
-use App\Interfaces\TemplateRepositoryInterface;
+use App\Interfaces\Repository\TemplateRepositoryInterface;
+use App\Interfaces\Service\TemplateServiceInterface;
 
-class TemplateService
+class TemplateService extends FilterSortService implements TemplateServiceInterface
 {
-    protected TemplateRepositoryInterface $repository;
-
     public function __construct(TemplateRepositoryInterface $repository)
     {
         $this->repository = $repository;
-    }
-
-    public function all()
-    {
-        return $this->repository->all();
-    }
-
-    public function find(string $uuid)
-    {
-        return $this->repository->find($uuid);
+        $this->model = $repository->getModel();
     }
 }

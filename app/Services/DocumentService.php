@@ -2,19 +2,14 @@
 
 namespace App\Services;
 
-use App\Interfaces\DocumentRepositoryInterface;
+use App\Interfaces\Repository\DocumentRepositoryInterface;
+use App\Interfaces\Service\DocumentServiceInterface;
 
-class DocumentService
+class DocumentService extends FilterSortService implements DocumentServiceInterface
 {
-    protected $repository;
-
     public function __construct(DocumentRepositoryInterface $repository)
     {
         $this->repository = $repository;
-    }
-
-    public function all()
-    {
-        return $this->repository->all();
+        $this->model = $repository->getModel();
     }
 }

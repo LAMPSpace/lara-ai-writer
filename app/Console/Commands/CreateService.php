@@ -46,16 +46,20 @@ class CreateService extends Command
         $stub = str_replace('{name}', $name, $stub);
 
         $repositoryName = $this->ask('What is the repository used for this service?');
-        $useRepository = $repositoryName != "" ? "\nuse App\Repositories\\" . $repositoryName . ";" : '';
+        $useRepository = $repositoryName != "" ? "\nuse App\Interfaces\\Repository\\" . $repositoryName . ";" : '';
         $repository = $repositoryName != "" ? $repositoryName . " " : "";
         $stub = str_replace('{repository}', $repository, $stub);
         $stub = str_replace('{useRepository}', $useRepository, $stub);
 
         $abstractClassName = $this->ask('What is the abstract class used for this service?');
-        $useExtend = $abstractClassName != "" ? "\nuse App\\" . $folder . "\\" . $abstractClassName . ';' : "";
-        $extends = $abstractClassName != "" ? "extends " . $abstractClassName : "";
+        $extends = $abstractClassName != "" ? "extends " . $abstractClassName : "BaseService";
         $stub = str_replace('{extends}', $extends, $stub);
-        $stub = str_replace('{useExtend}', $useExtend, $stub);
+
+        $interfaceClassName = $this->ask('What is the interface used for this service?');
+        $useImplement = $interfaceClassName != "" ? "\nuse App\\Interfaces\\Service" . "\\" . $interfaceClassName . ';' : "";
+        $implements = $interfaceClassName != "" ? "implements " . $interfaceClassName : "";
+        $stub = str_replace('{implements}', $implements, $stub);
+        $stub = str_replace('{useImplement}', $useImplement, $stub);
 
         file_put_contents($path, $stub);                                //Put contents to the new file with 1st arg is file's path, 2nd arg is file's contents
         $this->info($name . ' is created successfully!');
